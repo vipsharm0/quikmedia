@@ -1,0 +1,63 @@
+div{
+    /* border:1px solid red; */
+}
+.header{
+
+}
+.footer{
+
+}
+.content{
+}
+.dashboard-container{
+
+}
+.header-row-img{
+    height: 100px;
+    width: 150px;
+}
+.header-row-logotext{
+    padding-top: 18px;
+    padding-left: 30px;
+    font-family: "quikfont-medium";
+    font-size: 40px;
+}
+.header-row-logo{
+
+}
+.header-right-section{
+    padding-top: 30px;
+    text-align: right;
+}
+.glyph{
+    font-size: 20px;
+    color:#006ED5;
+}
+
+.dashboard-logout-text{
+    color: #006ED5;
+}
+.dashboard-welcome-text{
+    font-weight: 500;
+    font-size: 16px;
+    text-align: right;
+    color: #006ED5;
+}
+.nav-bar{
+    background-color: #006ED5;
+    text-align: center;
+    padding: 10px;
+}
+.nav-bar div{
+    color: #ffffff;
+    margin: auto;
+}
+.nav-row{
+    background-color: #e9ecef;
+}
+.dashboard-logout-section{
+    padding-right: 20px;
+}
+.header-icon-container{
+    padding-left: 0px;
+}

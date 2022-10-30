@@ -1,1 +1,15 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@font-face {
+    font-family:"quikfont" ;
+    src: url(assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family:"quikfont-medium" ;
+    src: url(assets/fonts/Poppins-Medium.ttf);
+}
+
+*{
+    font-family:"quikfont" ;
+    font-size: 13px;
+}
