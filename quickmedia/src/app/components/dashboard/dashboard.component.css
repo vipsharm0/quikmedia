@@ -34,8 +34,16 @@ div{
     color:#006ED5;
 }
 
-.dashboard-logout-text{
-    color: #006ED5;
+.logout-glyph:hover{
+    cursor: pointer;
+}
+
+.dashboard-logout-text a{
+    color: #006ED5; 
+    text-decoration: none;   
+}
+.dashboard-logout-text:hover{
+    cursor: pointer;
 }
 .dashboard-welcome-text{
     font-weight: 500;
@@ -52,12 +60,21 @@ div{
     color: #ffffff;
     margin: auto;
 }
+.nav-bar a{
+    color: #ffffff;
+    text-decoration: none;
+}
+.nav-bar a:hover{
+    padding-bottom: 2px;    
+    border-bottom: 2px solid #e9ecef;
+}
 .nav-row{
     background-color: #e9ecef;
 }
 .dashboard-logout-section{
     padding-right: 20px;
 }
+
 .header-icon-container{
     padding-left: 0px;
 }

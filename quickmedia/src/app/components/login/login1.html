@@ -13,16 +13,16 @@
                         <img class="quiklogo" src="../assets/images/quiklogo.png" alt="">
                     </div>
 
-                    <div [ngClass]="{'validation' : usernameValidationflag}" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                        <input (blur)="userblur($event)" class="input100" type="text" name="username" ngModel required>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                        <input #usname  class="input100" type="text" name="username" ngModel required>
                         <span class="focus-input100" data-placeholder="Username"></span>
                     </div>
 
-                    <div [ngClass]="{'validation' : passwordValidationflag}" class="wrap-input100 validate-input" data-validate="Enter password">
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
                         <span class="btn-show-pass">
                             <i class="zmdi zmdi-eye"></i>
                         </span>
-                        <input (blur)="userblur($event)" class="input1001" type="password" name="password" ngModel required>
+                        <input class="input100" type="password" name="password" ngModel required>
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
