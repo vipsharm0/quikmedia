@@ -19,8 +19,8 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'profile',
-        component: ProfileComponent
+        path: 'conversion',
+        loadChildren: () => import('./qk-conversion/qk-conversion.module').then(x => x.QkConversionModule)
       }
     ]
   },

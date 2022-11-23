@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { userModuleConstants } from '../../../constants/usermodule.constants'
 
 declare var $: any;
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('f') loginfrm!: NgForm;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private conversionservice: QkConversionService) { }
 
   ngOnInit(): void {
     $('.input100').on('blur', function () {
@@ -45,6 +46,9 @@ export class LoginComponent implements OnInit {
 
   loginSubmit(formdata: NgForm) {
     console.log(this.loginfrm)
+    this.conversionservice.getUser().subscribe(data => {
+      console.log(data)
+    })
     this.router.navigate(['/dashboard'])
   }
 
