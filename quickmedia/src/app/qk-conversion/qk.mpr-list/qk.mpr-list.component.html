@@ -1,0 +1,38 @@
+<div class="card mprlist-container">
+    <p-table [value]="mprlist" 
+    responsiveLayout="scroll"
+    [resizableColumns]="true" 
+    [responsive]="true"
+    styleClass="p-datatable-gridlines" 
+    [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id" pResizableColumn>Id <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th pSortableColumn="quickid" pResizableColumn>Quick Id <p-sortIcon field="quickid"></p-sortIcon>
+                </th>
+                <th pSortableColumn="language" pResizableColumn>Language <p-sortIcon field="language"></p-sortIcon>
+                </th>
+                <th pResizableColumn>Caption</th>
+                <th pResizableColumn>Brand</th>
+                <th>Duration</th>
+                <th>Type</th>
+                <th>Specs Code</th>
+                <th>Link</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-mprdata>
+            <tr>
+                <td>{{mprdata.id}}</td>
+                <td>{{mprdata.quickid}}</td>
+                <td>{{mprdata.language}}</td>
+                <td>{{mprdata.caption}}</td>
+                <td>{{mprdata.brand}}</td>
+                <td>{{mprdata.duration}}</td>
+                <td>{{mprdata.type}}</td>
+                <td>{{mprdata.specscode}}</td>
+                <td>{{mprdata.link}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
