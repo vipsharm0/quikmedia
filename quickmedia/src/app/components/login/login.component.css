@@ -498,5 +498,16 @@ button:hover {
     border-bottom: 2px solid red;
 }
 
+:host ::ng-deep .custom-toast .p-toast-message{
+  width: 100%;
+  color: #ffffff;
+  background: #FC466B;
+  background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+  background: linear-gradient(to right, #3F5EFB, #FC466B);
+  /* position: fixed;
+  bottom: 0;
+  right: 0;
+  font-weight: bold; */
+  }
 
 

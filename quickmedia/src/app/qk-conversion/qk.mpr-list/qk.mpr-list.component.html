@@ -1,11 +1,27 @@
 <div class="card mprlist-container">
     <p-table [value]="mprlist" 
+    [paginator]="true" [rows]="1" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
     responsiveLayout="scroll"
     [resizableColumns]="true" 
     [responsive]="true"
     styleClass="p-datatable-gridlines" 
-    [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="header">
+    [tableStyle]="{'min-width': '50rem'}"
+    [columns]="selectedColumns"
+    >
+    <ng-template pTemplate="caption">
+        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+            selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}" placeholder="Choose Columns"></p-multiSelect>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <!-- <th>Id</th> -->
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+        <!-- <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="id" pResizableColumn>Id <p-sortIcon field="id"></p-sortIcon>
                 </th>
@@ -20,8 +36,8 @@
                 <th>Specs Code</th>
                 <th>Link</th>
             </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-mprdata>
+        </ng-template> -->
+        <!-- <ng-template pTemplate="body" let-mprdata>
             <tr>
                 <td>{{mprdata.id}}</td>
                 <td>{{mprdata.quickid}}</td>
@@ -33,6 +49,20 @@
                 <td>{{mprdata.specscode}}</td>
                 <td>{{mprdata.link}}</td>
             </tr>
+        </ng-template> -->
+        <ng-template pTemplate="body" let-mprdata let-columns="columns">
+            <tr>
+                <!-- <td>{{mprdata.id}}</td> -->
+                <td *ngFor="let col of columns">
+                    {{mprdata[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
         </ng-template>
     </p-table>
 </div>

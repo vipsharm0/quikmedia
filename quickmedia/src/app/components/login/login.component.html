@@ -1,7 +1,8 @@
+<qk-errors *ngIf="showError" errortext="Invalid Username or Password"></qk-errors>
 <div class="fluid-container">
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100">
+            <div class="wrap-login100">                
                 <form class="login100-form validate-form" (ngSubmit)="loginSubmit(f)" #f="ngForm">
                     <span class="login100-form-title p-b-26">
                         Welcome
@@ -11,8 +12,7 @@
                     </span>
                     <div class="container-quiklogo">
                         <img class="quiklogo" src="../assets/images/quiklogo.png" alt="">
-                    </div>
-
+                    </div>                    
                     <div [ngClass]="{'validation' : usernameValidationflag}" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                         <input (blur)="userblur($event)" class="input100" type="text" name="username" ngModel required>
                         <span class="focus-input100" data-placeholder="Username"></span>
@@ -29,7 +29,7 @@
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn" type="submit" [disabled]="!f.valid">
+                            <button pButton pRipple class="login100-form-btn" type="submit" [disabled]="!f.valid">
                                 Login
                             </button>
                         </div>
@@ -39,3 +39,10 @@
         </div>
     </div>
 </div>
+
+<!-- <p-messages [(value)]="errormessage"></p-messages> -->
+<!-- <p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast styleClass="custom-toast" key="bc"></p-toast> -->
+<!-- <p-toast position="top-center" key="tc" styleClass="custom-toast"></p-toast> -->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { mpr } from 'src/app/Models/qk.conversion.model';
 
 @Component({
@@ -8,6 +8,11 @@ import { mpr } from 'src/app/Models/qk.conversion.model';
 })
 export class QkMprListComponent implements OnInit {
 
+  first = 0;
+
+  rows = 1;
+  cols: any[];
+  _selectedColumns: any[];
   mprlist:mpr[] = [];
   constructor() { 
 
@@ -37,6 +42,29 @@ export class QkMprListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.cols = [
+      { field: 'id', header: 'Id' },
+        { field: 'quickid', header: 'Quick Id' },
+        { field: 'language', header: 'Language' },
+        { field: 'caption', header: 'Caption' },
+        { field: 'brand', header: 'Brand' },
+        { field: 'duration', header: 'Duration' },
+        { field: 'type', header: 'Type' },
+        { field: 'specscode', header: 'Specs Code' },
+        { field: 'link', header: 'Link' }
+    ];
+
+    this._selectedColumns = this.cols;
   }
+
+  @Input() get selectedColumns(): any[] {
+    return this._selectedColumns;
+}
+
+set selectedColumns(val: any[]) {
+    //restore original order
+    this._selectedColumns = this.cols.filter(col => val.includes(col));
+}
 
 }
