@@ -19,8 +19,8 @@ declare var $: any;
 
 
 export class LoginComponent implements OnInit {
-  showError:boolean=false;
-  errormessage:Message[];
+  showError: boolean = false;
+  errormessage: Message[];
   usernameValidationflag!: Boolean;
   passwordValidationflag!: Boolean;
   constants: any = userModuleConstants;
@@ -64,26 +64,24 @@ export class LoginComponent implements OnInit {
       next: (respObj: user) => {
         if (respObj) {
           const passwd = this._utils.decryptdata(respObj.userId, respObj.password)
-          if(passwd == formdata.value.password){
+          if (passwd == formdata.value.password) {
             this.router.navigate(['/dashboard'])
-          }else{
+          } else {
             this.showError = true;
             formdata.reset();
-            setTimeout(()=>{                           
+            setTimeout(() => {
               this.showError = false;
-          }, 2000);
+            }, 2000);
           }
         }
 
-      }, error: (errobj:any) => {
+      }, error: (errobj: any) => {
         console.log(errobj)
-        // this._errornotification.showTopLeft(errobj);
-        // this._errornotification.showfullmessage();
         this.showError = true;
         formdata.reset();
-        setTimeout(()=>{                           
+        setTimeout(() => {
           this.showError = false;
-      }, 2000);
+        }, 2000);
       }
     })
   }
