@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
-import { user } from 'src/app/Models/admin/qk.adminmodule.model';
+import { UserData } from 'src/app/Models/admin/qk.adminmodule.model';
+// import { user } from 'src/app/Models/admin/qk.adminmodule.model';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { QkLoginService } from 'src/app/service/qk.login.service';
 import { ErrorNotification } from 'src/app/shared/qk.errors.service';
@@ -56,14 +57,13 @@ export class LoginComponent implements OnInit {
 
 
   loginSubmit(formdata: NgForm) {
-    console.log(this._utils.encryptdata(formdata.value.username, "raju"))
     //  console.log(this._utils.decryptdata(formdata.value.username, "U2FsdGVkX1+krmbb1dT1tTpRoIsC+uZihgrIwLwCdxQ="))
     // console.log(formdata)
     // this._errornotification.showTopLeft();
     this._loginservice.getuser(formdata.value.username).subscribe({
-      next: (respObj: user) => {
-        if (respObj) {
-          const passwd = this._utils.decryptdata(respObj.userId, respObj.password)
+      next: (respObj: UserData) => {
+        if (respObj.success) {
+          const passwd = this._utils.decryptdata(respObj.data[0].userId, respObj.data[0].password)
           if (passwd == formdata.value.password) {
             this.router.navigate(['/dashboard'])
           } else {
@@ -71,17 +71,22 @@ export class LoginComponent implements OnInit {
             formdata.reset();
             setTimeout(() => {
               this.showError = false;
-            }, 2000);
+            }, 3000);
           }
+        } else {
+          this.showError = true;
+          formdata.reset();
+          setTimeout(() => {
+            this.showError = false;
+          }, 3000);
         }
 
       }, error: (errobj: any) => {
-        console.log(errobj)
         this.showError = true;
         formdata.reset();
         setTimeout(() => {
           this.showError = false;
-        }, 2000);
+        }, 3000);
       }
     })
   }

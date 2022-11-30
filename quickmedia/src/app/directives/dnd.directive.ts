@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[appDnd]'
@@ -6,11 +6,13 @@ import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@ang
 export class DndDirective {
   @HostBinding('class.fileover') fileOver?: boolean;
   @Output() fileDropped = new EventEmitter<any>();
+  @Input() isdropable:boolean = false;
 
   constructor() { }
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt: any) {
+    if (!this.isdropable) return;
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = true;
@@ -18,6 +20,7 @@ export class DndDirective {
 
   // Dragleave listener
   @HostListener('dragleave', ['$event']) public onDragLeave(evt: any) {
+    if (!this.isdropable) return;
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = false;
@@ -25,6 +28,8 @@ export class DndDirective {
 
   // Drop listener
   @HostListener('drop', ['$event']) public ondrop(evt: any) {
+    if (!this.isdropable) return;
+    alert('hi')
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = false;

@@ -16,11 +16,17 @@ export class QkConversionService {
     return this.http.get('//api.quikdrop.in/api/quik/getuser?userid=vipin')
   }
 
-  uploadfiles(files: FileList | null) {
+  uploadfiles(files: FileList | null, uploadFlag:boolean = false) {
     let frmdata = new FormData();
     if(files != null){
       if (files.length > 0) {
         let i = 0;
+        if(uploadFlag){
+          frmdata.append("action", "ProcessGMR")
+        }else{
+          frmdata.append("action", "CreatePreview")
+        }
+        
         for(let x=0, len=files.length; x < len; x++){
           frmdata.append(`file-${i}`, files[x], files[x].name)
         }
@@ -31,7 +37,7 @@ export class QkConversionService {
       }
     }
   
-    return this.http.post("https://jsonplaceholder.typicode.com/posts", frmdata)
+    return this.http.post("http://localhost:5000/quickapi/uploadfile", frmdata)
   }
 }
 

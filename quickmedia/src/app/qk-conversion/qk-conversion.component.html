@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="container file-container">
         <i class="bi bi-cloud-arrow-up"></i>
+        <div class="upload-text">Upload Gmr File</div>
         <input 
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
         (change)="fileBrowseHandler($event)" 
@@ -8,8 +9,8 @@
         id="fileDropRef" 
         (fileDropped)="onFileDropped($event)" />
     
-        <h3>Drag and drop file here</h3>
-        <h3>or</h3>
+        <!-- <h3>Drag and drop file here</h3>
+        <h3>or</h3> -->
         <label classs="align-bottom" for="fileDropRef">Browse for file</label>
     </div>
 </div>

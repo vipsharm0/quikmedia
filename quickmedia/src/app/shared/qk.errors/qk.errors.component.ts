@@ -14,7 +14,7 @@ export class QkErrorsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.errormessages = [
-      {severity:'error', life:20000, summary:'Error', detail:this.errortext}
+      {severity:'error', life:30000, summary:'Error', detail:this.errortext}
     ]
   }
 

@@ -10,6 +10,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import { FieldsetModule, } from 'primeng/fieldset';
+import { QkConversionExecuteComponent } from './qk.conversion.execute/qk.conversion.execute.component';
 
 
 
@@ -17,7 +19,8 @@ import {ButtonModule} from 'primeng/button';
   declarations: [
     QkConversionComponent,
     DndDirective,
-    QkMprListComponent
+    QkMprListComponent,
+    QkConversionExecuteComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,8 @@ import {ButtonModule} from 'primeng/button';
     TableModule,
     MultiSelectModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    FieldsetModule
   ]
 })
 export class QkConversionModule { }

@@ -1,4 +1,4 @@
-export class user {
+ class user {
     createdBy: string;
     createdOn: string;
     emailId: string;
@@ -13,4 +13,12 @@ export class user {
     roldId: number;
     role: string;
     userId: string;
+    
+}
+
+export class UserData{
+    data:user;
+    success: boolean;
+    errors: string[];
+
 }
