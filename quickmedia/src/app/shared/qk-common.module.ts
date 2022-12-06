@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { QkErrorsComponent } from './qk.errors/qk.errors.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { menuitems } from './qk.menuitems';
 
 
 
@@ -23,6 +24,6 @@ import {MessageModule} from 'primeng/message';
     MessagesModule
   ],
   exports:[ToastModule, RippleModule, QkErrorsComponent],
-  providers:[utils, ErrorNotification,MessageService]
+  providers:[utils, ErrorNotification,MessageService, menuitems]
 })
 export class QkCommonModule { }

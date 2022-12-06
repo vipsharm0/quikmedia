@@ -5,6 +5,8 @@
         <input 
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
         (change)="fileBrowseHandler($event)" 
+        (click)="fileInput.value = null" value=""
+        #fileInput
         type="file" #fileDropRef appDnd 
         id="fileDropRef" 
         (fileDropped)="onFileDropped($event)" />

@@ -7,6 +7,7 @@ import { UserData } from 'src/app/Models/admin/qk.adminmodule.model';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { QkLoginService } from 'src/app/service/qk.login.service';
 import { ErrorNotification } from 'src/app/shared/qk.errors.service';
+import { menuitems } from 'src/app/shared/qk.menuitems';
 import { utils } from 'src/app/shared/qk.utilities';
 import { userModuleConstants } from '../../../constants/usermodule.constants'
 declare var $: any;
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
     private conversionservice: QkConversionService,
     private _errornotification: ErrorNotification,
     private _utils: utils,
-    private _loginservice: QkLoginService
+    private _loginservice: QkLoginService,
+    private _menuitems: menuitems
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +67,9 @@ export class LoginComponent implements OnInit {
         if (respObj.success) {
           const passwd = this._utils.decryptdata(respObj.data[0].userId, respObj.data[0].password)
           if (passwd == formdata.value.password) {
-            this.router.navigate(['/dashboard'])
+            this._menuitems.getroles(respObj.data[0])
+            // console.log(this._menuitems.getMenus())
+            // this.router.navigate(['/dashboard'])
           } else {
             this.showError = true;
             formdata.reset();
