@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Subject } from "rxjs";
 import { userModuleConstants } from "src/constants/usermodule.constants";
 import { UserData } from "../Models/admin/qk.adminmodule.model";
 import { menuitem } from "./models/qk.common";
@@ -6,6 +7,7 @@ import { menuitem } from "./models/qk.common";
 @Injectable()
 export class menuitems {
     roleswithrights: object[] = [];
+    pageMenu:{}={};
     pagelist: object;
     filters = {
         "superAdmin": userModuleConstants.superAdmin,
@@ -19,8 +21,9 @@ export class menuitems {
         "qp": userModuleConstants.qp
     };
 
-    getroles(data: UserData) {
+    getroles(data: UserData):object {
 
+        this.roleswithrights=[]
         let roles: string[] = [];
         for (let [keys, value] of Object.entries(this.filters)) {
             let obj = Object.keys(data).filter((key) => {
@@ -40,8 +43,20 @@ export class menuitems {
             }
 
         }
-        console.log(this.getMenuBarHeading(4))
-        this.getContextbymain(4)
+        
+        this.pageMenu["conversion"] = this.getMenuBarHeading(userModuleConstants.conversion);
+        this.pageMenu["admin"] = this.getMenuBarHeading(userModuleConstants.administrator);
+        this.pageMenu["invoicing"] = this.getMenuBarHeading(userModuleConstants.invoicing);
+        this.pageMenu["reporting"] = this.getMenuBarHeading(userModuleConstants.reporting);
+
+        this.pageMenu["conversionList"] = this.getContextbymain(userModuleConstants.conversion);
+        this.pageMenu["adminList"] = this.getContextbymain(userModuleConstants.administrator);
+        this.pageMenu["invoicingList"] = this.getContextbymain(userModuleConstants.invoicing);
+        this.pageMenu["reportingList"] = this.getContextbymain(userModuleConstants.reporting);
+        this.roleswithrights=[]
+        return this.pageMenu;
+        // this.getMenuBarHeading(1)
+        // this.getContextbymain(4)
 
     }
 
@@ -57,8 +72,7 @@ export class menuitems {
                  
             })            
         }
-        console.log(pagelistitems) 
-        return pagelist;
+        return pagelistitems;
     }
     getMenuBarHeading(menuid: number): string {
         let menuHeading;
@@ -81,12 +95,11 @@ export class menuitems {
                     break;
                 }
                 default: {
-                    menuHeading = "-";
+                    menuHeading = "";
                     break;
                 }
             }
         }
-
         return menuHeading;
     }
 
@@ -125,7 +138,7 @@ export class menuitems {
         {
             role: this.filters.uploader,
             rights: [
-                { menuid: [4,1], data: [1,11] }
+                { menuid: [4,1,2], data: [1,2,11,8] }
             ]
         },
         {
@@ -161,10 +174,10 @@ export class menuitems {
     ];
 
     private menus: menuitem[] = [
-        { "id":1, "menuid": userModuleConstants.conversion, "name": "Upload Gmr", "url": "vipin1" },
+        { "id":1, "menuid": userModuleConstants.conversion, "name": "Upload Gmr", "url": "conversion" },
         { "id":2, "menuid": userModuleConstants.conversion, "name": "View Order", "url": "vipin3" },
-        { "id":3, "menuid": userModuleConstants.conversion, "name": "Mpr", "url": "vipin3" },
-        { "id":4, "menuid": userModuleConstants.conversion, "name": "Upload Input Tvc", "url": "vipin3" },
+        { "id":3, "menuid": userModuleConstants.conversion, "name": "Mpr", "url": "conversion/mprlist" },
+        { "id":4, "menuid": userModuleConstants.conversion, "name": "Upload Input Tvc", "url": "conversion/execute" },
         { "id":5, "menuid": userModuleConstants.conversion, "name": "Conversion Status", "url": "vipin3" },
         { "id":6, "menuid": userModuleConstants.invoicing, "name": "invoicing1", "url": "invoicingurl1" },
         { "id":7, "menuid": userModuleConstants.invoicing, "name": "invoicing2", "url": "invoicingurl2" },

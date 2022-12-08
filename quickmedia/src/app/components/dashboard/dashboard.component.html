@@ -1,3 +1,4 @@
+<app-menu [item]="abc()"></app-menu>
 <div>
     <div class="dashboard-container container-fluid">
         <div class="">
@@ -43,16 +44,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/dashboard">Home</a>
+                        <a class="nav-link active" aria-current="page" routerLink="/dashboard/{{conversiontext}}">Home</a>
                     </li>
                    
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" *ngIf='menudata && menudata["conversion"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Conversion
+                            {{menudata["conversion"]}}
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" [routerLink]="['conversion']">Upload Gmr</a></li>
+                        <ul class="dropdown-menu" *ngIf='menudata && menudata["conversion"] && menudata["conversionList"].length > 0'>
+                            <span *ngFor='let item of menudata["conversionList"]'>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </span>
+                            <!-- <li><a class="dropdown-item" [routerLink]="['conversion']">Upload Gmr</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -68,23 +77,53 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Conversion Status</a></li>
+                            <li><a class="dropdown-item" href="#">Conversion Status</a></li> -->
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/dashboard">Admin</a>
-                    </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" *ngIf='menudata && menudata["admin"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Invoicing
+                            {{menudata["admin"]}}
                         </a>
-                        <ul class="dropdown-menu">                           
-                            <li><a class="dropdown-item" href="#">View Order</a></li>                                                      
+                        <ul class="dropdown-menu" *ngIf='menudata && menudata["admin"] && menudata["adminList"].length > 0'>
+                            <span *ngFor='let item of menudata["adminList"]'>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </span>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/dashboard">Reporting</a>
+                    <li class="nav-item dropdown" *ngIf='menudata && menudata["invoicing"]'>
+                        <a class="nav-link" routerLink="/dashboard">{{menudata["invoicing"]}}</a>
+                        <ul class="dropdown-menu" *ngIf='menudata && menudata["invoicing"] && menudata["invoicingList"].length > 0'>
+                            <span *ngFor='let item of menudata["invoicingList"]'>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </span>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf='menudata && menudata["reporting"]'>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{menudata["reporting"]}}
+                        </a>
+                        <ul class="dropdown-menu" *ngIf='menudata && menudata["reporting"] && menudata["reportingList"].length > 0'>
+                            <span *ngFor='let item of menudata["reportingList"]'>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </span>
+                        </ul>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>

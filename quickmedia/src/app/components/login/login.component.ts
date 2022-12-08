@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { Message } from 'primeng/api';
 import { UserData } from 'src/app/Models/admin/qk.adminmodule.model';
 // import { user } from 'src/app/Models/admin/qk.adminmodule.model';
@@ -21,6 +21,7 @@ declare var $: any;
 
 
 export class LoginComponent implements OnInit {
+  test:number = 0
   showError: boolean = false;
   errormessage: Message[];
   usernameValidationflag!: Boolean;
@@ -39,6 +40,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  
+    this._loginservice.getuser("admin").subscribe({
+      next:(respObj: UserData) => {
+        this.test = 2;
+      }
+    })
+
+
     $('.input100').on('blur', function () {
       if ($('.input100').val().trim() != "") {
         $('.input100').addClass('has-val');
@@ -64,12 +73,11 @@ export class LoginComponent implements OnInit {
     // this._errornotification.showTopLeft();
     this._loginservice.getuser(formdata.value.username).subscribe({
       next: (respObj: UserData) => {
-        if (respObj.success) {
+        if (respObj.success) {          
           const passwd = this._utils.decryptdata(respObj.data[0].userId, respObj.data[0].password)
           if (passwd == formdata.value.password) {
-            this._menuitems.getroles(respObj.data[0])
-            // console.log(this._menuitems.getMenus())
-            // this.router.navigate(['/dashboard'])
+            // this._menuitems.getroles(respObj.data[0])           
+             this.router.navigate(['/dashboard/'+formdata.value.username])
           } else {
             this.showError = true;
             formdata.reset();
