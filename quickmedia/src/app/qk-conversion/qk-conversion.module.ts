@@ -10,9 +10,12 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule, } from 'primeng/fieldset';
 import { QkConversionExecuteComponent } from './qk.conversion.execute/qk.conversion.execute.component';
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { QkCommonModule } from '../shared/qk-common.module';
 
 
 @NgModule({
@@ -29,7 +32,11 @@ import { QkConversionExecuteComponent } from './qk.conversion.execute/qk.convers
     MultiSelectModule,
     FormsModule,
     ButtonModule,
-    FieldsetModule
+    FieldsetModule,
+    DropdownModule,
+    MessagesModule,
+    MessageModule,
+    QkCommonModule
   ]
 })
 export class QkConversionModule { }

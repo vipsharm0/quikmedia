@@ -1,23 +1,25 @@
  class user {
-    createdBy: string;
-    createdOn: string;
-    emailId: string;
-    firstName: string;
-    id: number;
-    isDeleted: boolean;
-    lastName: string;
-    mobileNo: string;
-    modifiedBy: string;
-    modifiedOn: string;
-    password: string;
-    roldId: number;
-    role: string;
-    userId: string;
-    
+    EmailId:string; 
+    FirstName:string;
+    Id:number;
+    IsAdmin:boolean;
+    IsAgency:boolean;
+    IsBroadcasterApprover:boolean;
+    IsBroadcasterViewer:boolean;
+    IsClient:boolean;
+    IsQP:boolean;
+    IsSuperAdmin:boolean;
+    IsUploader:boolean;
+    LastName:string;
+    MobileNo:string;
+    Password:string;
+    UserId:string;    
 }
 
+
+
 export class UserData{
-    data:user;
+    data:user[];
     success: boolean;
     errors: string[];
 

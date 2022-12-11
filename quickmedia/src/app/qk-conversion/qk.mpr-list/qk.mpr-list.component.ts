@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { mpr } from 'src/app/Models/qk.conversion.model';
+import { menuitems } from 'src/app/shared/qk.menuitems';
 
 @Component({
   selector: 'app-qk.mpr-list',
@@ -14,7 +15,7 @@ export class QkMprListComponent implements OnInit {
   cols: any[];
   _selectedColumns: any[];
   mprlist:mpr[] = [];
-  constructor() { 
+  constructor(public _menuitems:menuitems) { 
 
     let mprdata1 = new mpr();
     mprdata1.brand="Bata Footwear";
@@ -43,6 +44,7 @@ export class QkMprListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log(this._menuitems.roleswithrights)
     this.cols = [
       { field: 'id', header: 'Id' },
         { field: 'quickid', header: 'Quick Id' },

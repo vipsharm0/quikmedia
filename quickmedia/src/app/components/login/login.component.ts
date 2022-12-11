@@ -68,13 +68,14 @@ export class LoginComponent implements OnInit {
 
 
   loginSubmit(formdata: NgForm) {
+    // this.router.navigate(['/dashboard/'+formdata.value.username])
     //  console.log(this._utils.decryptdata(formdata.value.username, "U2FsdGVkX1+krmbb1dT1tTpRoIsC+uZihgrIwLwCdxQ="))
     // console.log(formdata)
     // this._errornotification.showTopLeft();
     this._loginservice.getuser(formdata.value.username).subscribe({
       next: (respObj: UserData) => {
         if (respObj.success) {          
-          const passwd = this._utils.decryptdata(respObj.data[0].userId, respObj.data[0].password)
+          const passwd = this._utils.decryptdata(respObj.data[0].UserId, respObj.data[0].Password)
           if (passwd == formdata.value.password) {
             // this._menuitems.getroles(respObj.data[0])           
              this.router.navigate(['/dashboard/'+formdata.value.username])

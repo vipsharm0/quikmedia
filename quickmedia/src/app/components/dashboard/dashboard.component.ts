@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { UserData } from 'src/app/Models/admin/qk.adminmodule.model';
+import { forkJoin } from 'rxjs';
+import { qkState } from 'src/app/Models/qk.conversion.model';
+import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { QkLoginService } from 'src/app/service/qk.login.service';
 import { menuitems } from 'src/app/shared/qk.menuitems';
 import { userModuleConstants } from "src/constants/usermodule.constants";
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _menuitems: menuitems,
     private _loginservice:QkLoginService,
+    private _conversionservice:QkConversionService,
     private _activatedRouteSnapshot:ActivatedRoute,
     ) { 
 
@@ -26,15 +29,29 @@ export class DashboardComponent implements OnInit {
   
   ngOnInit(): void {
 
+  
+
     this._activatedRouteSnapshot.params.subscribe(loggeduser=>{
       this.conversiontext = loggeduser["user"];
-      this._loginservice.getuser(loggeduser["user"]).subscribe({
-        next: (respObj: UserData)=>{
-          this.menudata=this._menuitems.getroles(respObj.data[0]);
-          console.log(this.menudata)
+      forkJoin([
+        this._loginservice.getuser(loggeduser["user"]),
+        this._conversionservice.getclients(loggeduser["user"])
+      ]).subscribe({
+        next:(response)=>{
+          let state:qkState;
+          this.menudata = this._menuitems.getroles(response[0]["data"][0]);
+          const clientDetails:qkState = response[1]["data"]  
+          this._loginservice.updateState(clientDetails)    
         }
       })
-      console.log(loggeduser)
+
+      // this._loginservice.getuser(loggeduser["user"])
+      // .subscribe({
+      //   next: (respObj: UserData)=>{
+      //     this.menudata=this._menuitems.getroles(respObj.data[0]);
+      //     // console.log(this.menudata)
+      //   }
+      // })
     })
    }
 

@@ -9,12 +9,14 @@ import { QkErrorsComponent } from './qk.errors/qk.errors.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { menuitems } from './qk.menuitems';
+import { QkSpinnerComponent } from './qk.spinner/qk.spinner.component';
 
 
 
 @NgModule({
   declarations: [
-    QkErrorsComponent
+    QkErrorsComponent,
+    QkSpinnerComponent
   ],
   imports: [
     CommonModule,

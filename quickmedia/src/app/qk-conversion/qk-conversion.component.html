@@ -1,18 +1,46 @@
 <div class="container-fluid">
-    <div class="container file-container">
-        <i class="bi bi-cloud-arrow-up"></i>
-        <div class="upload-text">Upload Gmr File</div>
-        <input 
-        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-        (change)="fileBrowseHandler($event)" 
-        (click)="fileInput.value = null" value=""
-        #fileInput
-        type="file" #fileDropRef appDnd 
-        id="fileDropRef" 
-        (fileDropped)="onFileDropped($event)" />
-    
-        <!-- <h3>Drag and drop file here</h3>
-        <h3>or</h3> -->
-        <label classs="align-bottom" for="fileDropRef">Browse for file</label>
+    <div class="row">
+        <div class="col">
+            <form #gmrFrm="ngForm">
+                <div class="form-group">
+                    <div class="ms-5 help-block with-errors" *ngIf="gmrFrm.touched && !gmrFrm.valid">Please select client</div>
+                    <div class="ms-5 form-floating" id="clientLabel">
+                        <select style="width:auto;" 
+                        class="form-select form-select-lg w-25" 
+                        aria-label=".form-select-lg example"
+                        name="clientId"
+                        [(ngModel)]="selectedClient"
+                        required>
+                            <option *ngFor='let item of clients' [ngValue]="item">
+                                    {{item.Name}}
+                            </option>
+                           
+                          </select>
+                          <label for="clientLabel">Select Client</label>
+                         
+                        </div>
+                </div>
+               
+                
+        
+                <div class="container file-container m-5">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                    <div class="upload-text">Upload Gmr File</div>
+                    <input  [disabled]="!gmrFrm.valid"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        (change)="fileBrowseHandler($event)" (click)="fileInput.value = null" value="" #fileInput type="file"
+                        #fileDropRef appDnd id="fileDropRef" (fileDropped)="onFileDropped($event)" />
+        
+                    <!-- <h3>Drag and drop file here</h3>
+                <h3>or</h3> -->
+                <button [disabled]="!gmrFrm.valid" type="button" class="browse-label btn btn-primary" for="fileDropRef">Browse for file</button>
+                    <!-- <label class="align-bottom browse-label" for="fileDropRef">Browse for file</label> -->
+                </div>
+            </form>
+          </div>
+          <div class="col">
+            Errors
+          </div>
     </div>
+    
 </div>

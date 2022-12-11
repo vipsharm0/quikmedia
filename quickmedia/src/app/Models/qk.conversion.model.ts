@@ -9,3 +9,17 @@ export class mpr{
     specscode:string;
     link:string;
 }
+
+export class client{
+    Id:number
+    Name:string
+}
+export class ClientData{
+    data:client[];
+    success: boolean;
+    errors: string[];
+
+}
+export class qkState{
+    clientdata:ClientData;   
+}

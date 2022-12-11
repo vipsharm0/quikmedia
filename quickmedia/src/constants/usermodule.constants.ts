@@ -3,15 +3,15 @@ export class userModuleConstants{
     public static user = "username"
     public static pass = "password"
 
-    public static superAdmin = "isSuperAdmin";
-    public static admin = "isAdmin";
-    public static manager = "isManager";
-    public static uploader = "isUploader";
-    public static broadcastApprover = "isBroadcasterApprover";
-    public static broadcastViewer = "isBroadcasterViewer";
-    public static client = "isClient";
-    public static agency = "isAgency";
-    public static qp = "isQP";
+    public static superAdmin = "IsSuperAdmin";
+    public static admin = "IsAdmin";
+    public static manager = "IsManager";
+    public static uploader = "IsUploader";
+    public static broadcastApprover = "IsBroadcasterApprover";
+    public static broadcastViewer = "IsBroadcasterViewer";
+    public static client = "IsClient";
+    public static agency = "IsAgency";
+    public static qp = "IsQP";
 
     public static conversion = 1;
     public static administrator = 2;
