@@ -2,20 +2,21 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, Subject } from 'rxjs';
 import { urlConstants } from 'src/constants/url.constants';
-import { qkState } from '../Models/qk.conversion.model';
+import { ClientData, qkState } from '../Models/qk.conversion.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QkLoginService {
-  private stateObject = new Subject<qkState>();
+  qkState:qkState = new qkState()
+  private stateObject = new BehaviorSubject<qkState>(this.qkState);
   appState = this.stateObject.asObservable();
 
   constructor(private http: HttpClient) { }
 
  
   updateState(state: qkState) {
-    this.stateObject.next(state)
+    this.stateObject.next(state);
     }
   
   getuser(username:string){
