@@ -23,3 +23,42 @@ export class ClientData{
 export class qkState{
     clientdata:ClientData;   
 }
+
+
+export class gmr{
+    brand:string;
+    caption:string;
+    channelDestination:string;
+    channelDestinationID:number;
+    channels:string;
+    clientCompaignID:number;
+    createdBy:string;
+    createdOn:Date
+    dur:number;
+    id:number;
+    inputFileName:string;
+    inputFileURL:string;
+    isDeleted:boolean;
+    isSameDestination:boolean;
+    isSameSpec:boolean;
+    language:string;
+    linkFTP:string;
+    modifiedBy:string;
+    modifiedOn:Date
+    orderNo:string;
+    outPutURL:string;
+    previewURL:string;
+    quikID:string;
+    remarks:string;
+    sdhd:string;
+    shortCaption:string;
+    specCode:string;
+    specNumber:number;
+    statusID:number;
+}
+export class gmrValidationData{
+    data:any;
+    success: boolean;
+    errors: gmr[];
+
+}

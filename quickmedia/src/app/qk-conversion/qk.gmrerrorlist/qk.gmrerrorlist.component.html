@@ -1,0 +1,22 @@
+<p-table [value]="errors" styleClass="p-datatable-striped" [tableStyle]="{'max-width': '60rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Channel</th>
+            <th>Language</th>
+            <th>Caption</th>
+            <th>Duration</th>
+            <th>Brand</th>
+            <th>Error</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-err>
+        <tr>
+            <td>{{err.channels}}</td>
+            <td>{{err.language}}</td>
+            <td>{{err.caption}}</td>
+            <td>{{err.dur}}</td>
+            <td>{{err.brand}}</td>
+            <td style="color:red ;">{{err.remarks}}</td>
+        </tr>
+    </ng-template>
+</p-table>

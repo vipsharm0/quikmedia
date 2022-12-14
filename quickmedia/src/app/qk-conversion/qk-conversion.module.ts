@@ -16,6 +16,7 @@ import { QkConversionExecuteComponent } from './qk.conversion.execute/qk.convers
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { QkCommonModule } from '../shared/qk-common.module';
+import { QkGmrerrorlistComponent } from './qk.gmrerrorlist/qk.gmrerrorlist.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { QkCommonModule } from '../shared/qk-common.module';
     QkConversionComponent,
     DndDirective,
     QkMprListComponent,
-    QkConversionExecuteComponent
+    QkConversionExecuteComponent,
+    QkGmrerrorlistComponent
   ],
   imports: [
     CommonModule,

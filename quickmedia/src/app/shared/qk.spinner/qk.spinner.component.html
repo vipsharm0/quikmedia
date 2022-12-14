@@ -1,1 +1,3 @@
-<p>qk.spinner works!</p>
+<div class="progress-spinner" *ngIf="isLoading | async">
+<p-progressSpinner  [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" class="spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+</div>

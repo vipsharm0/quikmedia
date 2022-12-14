@@ -1,3 +1,4 @@
+<qk-errors #toastmsg type="toast" text="Mpr Created Successfully"></qk-errors>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -39,7 +40,7 @@
             </form>
           </div>
           <div class="col">
-            Errors
+            <qk-gmrerrorlist *ngIf="gmrValidationData" [errorList]="gmrValidationData"></qk-gmrerrorlist>
           </div>
     </div>
     

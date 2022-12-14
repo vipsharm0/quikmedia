@@ -1,1 +1,2 @@
-<p-messages [closable]="false"  [(value)]="errormessages" [enableService]="false"></p-messages>
+<p-messages *ngIf="type=='error'" [closable]="false"  [(value)]="errormessages" [enableService]="false"></p-messages>
+<p-toast *ngIf="type=='toast'" position="bottom-right" key="br"></p-toast>

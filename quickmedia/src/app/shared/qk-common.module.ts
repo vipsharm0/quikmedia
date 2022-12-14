@@ -10,6 +10,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { menuitems } from './qk.menuitems';
 import { QkSpinnerComponent } from './qk.spinner/qk.spinner.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -23,9 +24,10 @@ import { QkSpinnerComponent } from './qk.spinner/qk.spinner.component';
     ToastModule,
     RippleModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    ProgressSpinnerModule
   ],
-  exports:[ToastModule, RippleModule, QkErrorsComponent],
+  exports:[ToastModule, RippleModule, QkErrorsComponent, QkSpinnerComponent],
   providers:[utils, ErrorNotification,MessageService, menuitems]
 })
 export class QkCommonModule { }
