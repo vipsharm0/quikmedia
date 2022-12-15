@@ -21,7 +21,12 @@ export class ClientData{
 
 }
 export class qkState{
-    clientdata:ClientData;   
+    clientdata:ClientData;  
+    orders: OrderData;
+}
+export class qkstate{
+    key:string;  
+    val: {};
 }
 
 
@@ -60,5 +65,16 @@ export class gmrValidationData{
     data:any;
     success: boolean;
     errors: gmr[];
+
+}
+
+export class order{
+    Id:number
+    Name:string
+}
+export class OrderData{
+    data:order[];
+    success: boolean;
+    errors: string[];
 
 }

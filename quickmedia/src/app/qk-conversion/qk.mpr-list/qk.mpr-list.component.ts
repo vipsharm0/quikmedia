@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { mpr } from 'src/app/Models/qk.conversion.model';
+import { client, mpr, order } from 'src/app/Models/qk.conversion.model';
+import { QkLoginService } from 'src/app/service/qk.login.service';
 import { menuitems } from 'src/app/shared/qk.menuitems';
 
 @Component({
@@ -9,13 +10,19 @@ import { menuitems } from 'src/app/shared/qk.menuitems';
 })
 export class QkMprListComponent implements OnInit {
 
+  orderDisabled:boolean=true;
+  clients:client[];
+  selectedorder:order;
+  orders:order[];
+  selectedClient:client;
   first = 0;
 
   rows = 1;
   cols: any[];
   _selectedColumns: any[];
   mprlist:mpr[] = [];
-  constructor(public _menuitems:menuitems) { 
+  constructor(public _menuitems:menuitems,
+    private _stateservice:QkLoginService) { 
 
     let mprdata1 = new mpr();
     mprdata1.brand="Bata Footwear";
@@ -43,8 +50,21 @@ export class QkMprListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._stateservice.appState.subscribe((data: any) => {
+      if (data) {
+        let filteredClients = data.filter( dt => dt.key == "clients")
+        let filteredOrders = data.filter( dt => dt.key == "orders")
+        if(filteredClients && filteredClients.length > 0){
+          this.clients = filteredClients[0].val
+        }
+        if(filteredOrders && filteredOrders.length > 0){
+          this.orders = filteredOrders[0].val
+        }
+     
+      }
 
-    console.log(this._menuitems.roleswithrights)
+    })
+
     this.cols = [
       { field: 'id', header: 'Id' },
         { field: 'quickid', header: 'Quick Id' },
@@ -67,6 +87,12 @@ export class QkMprListComponent implements OnInit {
 set selectedColumns(val: any[]) {
     //restore original order
     this._selectedColumns = this.cols.filter(col => val.includes(col));
+}
+
+changeclient(client:client){
+  console.log(JSON.stringify(client))
+  this.orderDisabled = false;
+  this.orders = this.orders.filter( dt => dt.Id == client.Id)
 }
 
 }

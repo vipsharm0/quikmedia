@@ -1,7 +1,8 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { qkState } from 'src/app/Models/qk.conversion.model';
+import { client, order, qkstate, qkState } from 'src/app/Models/qk.conversion.model';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { QkLoginService } from 'src/app/service/qk.login.service';
 import { menuitems } from 'src/app/shared/qk.menuitems';
@@ -34,24 +35,17 @@ export class DashboardComponent implements OnInit {
       this.conversiontext = loggeduser["user"];
       forkJoin([
         this._loginservice.getuser(loggeduser["user"]),
-        this._conversionservice.getclients(loggeduser["user"])
+        this._conversionservice.getclients(loggeduser["user"]),
+        this._conversionservice.getorders()
       ]).subscribe({
         next:(response)=>{
-          let state:qkState;
           this.menudata = this._menuitems.getroles(response[0]["data"][0]);
-          console.log("menudata loaded")
-          const clientDetails:qkState = response[1]["data"]  
-          this._loginservice.updateState(clientDetails)    
+          const clientDetails:client[] = response[1]["data"] 
+          const orderDetails:order[] = response[2]["data"]         
+          this._loginservice.updateState("clients", clientDetails)   
+           this._loginservice.updateState("orders", orderDetails)   
         }
-      })
-
-      // this._loginservice.getuser(loggeduser["user"])
-      // .subscribe({
-      //   next: (respObj: UserData)=>{
-      //     this.menudata=this._menuitems.getroles(respObj.data[0]);
-      //     // console.log(this.menudata)
-      //   }
-      // })
+      })  
     })
    }
 

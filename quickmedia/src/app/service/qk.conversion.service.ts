@@ -24,6 +24,12 @@ export class QkConversionService {
     .set('userid', username)
     return this.http.get(url, {params})
   }
+  getorders(clientId:number=1){
+    const url = urlConstants.getorders;
+    let params = new HttpParams()
+    .set('clientId', clientId)
+    return this.http.get(url, {params})
+  }
 
   uploadfiles(files: FileList | null, uploadFlag:boolean = false, client:client=null) {
     let frmdata = new FormData();

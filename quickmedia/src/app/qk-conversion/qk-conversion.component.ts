@@ -24,8 +24,14 @@ export class QkConversionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._stateservice.appState.subscribe((data:any)=>{
-      this.clients = data;
+    this._stateservice.appState.subscribe((data: any) => {
+      if (data) {
+        let filterdata = data.filter(function (dt) {
+          return dt.key == "clients"
+        })
+        this.clients = filterdata[0].val;
+      }
+
     })
   }
 

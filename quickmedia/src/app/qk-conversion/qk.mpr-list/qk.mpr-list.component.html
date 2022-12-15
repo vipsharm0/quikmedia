@@ -1,68 +1,39 @@
-<div class="card mprlist-container">
-    <p-table [value]="mprlist" 
-    [paginator]="true" [rows]="1" [showCurrentPageReport]="true" 
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
-    responsiveLayout="scroll"
-    [resizableColumns]="true" 
-    [responsive]="true"
-    styleClass="p-datatable-gridlines" 
-    [tableStyle]="{'min-width': '50rem'}"
-    [columns]="selectedColumns"
-    >
-    <ng-template pTemplate="caption">
-        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
-            selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}" placeholder="Choose Columns"></p-multiSelect>
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <!-- <th>Id</th> -->
-            <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-        </tr>
-    </ng-template>
-        <!-- <ng-template pTemplate="header">
-            <tr>
-                <th pSortableColumn="id" pResizableColumn>Id <p-sortIcon field="id"></p-sortIcon>
-                </th>
-                <th pSortableColumn="quickid" pResizableColumn>Quick Id <p-sortIcon field="quickid"></p-sortIcon>
-                </th>
-                <th pSortableColumn="language" pResizableColumn>Language <p-sortIcon field="language"></p-sortIcon>
-                </th>
-                <th pResizableColumn>Caption</th>
-                <th pResizableColumn>Brand</th>
-                <th>Duration</th>
-                <th>Type</th>
-                <th>Specs Code</th>
-                <th>Link</th>
-            </tr>
-        </ng-template> -->
-        <!-- <ng-template pTemplate="body" let-mprdata>
-            <tr>
-                <td>{{mprdata.id}}</td>
-                <td>{{mprdata.quickid}}</td>
-                <td>{{mprdata.language}}</td>
-                <td>{{mprdata.caption}}</td>
-                <td>{{mprdata.brand}}</td>
-                <td>{{mprdata.duration}}</td>
-                <td>{{mprdata.type}}</td>
-                <td>{{mprdata.specscode}}</td>
-                <td>{{mprdata.link}}</td>
-            </tr>
-        </ng-template> -->
-        <ng-template pTemplate="body" let-mprdata let-columns="columns">
-            <tr>
-                <!-- <td>{{mprdata.id}}</td> -->
-                <td *ngFor="let col of columns">
-                    {{mprdata[col.field]}}
-                </td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="paginatorleft">
-            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-        </ng-template>
-        <ng-template pTemplate="paginatorright">
-            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-        </ng-template>
-    </p-table>
+<div class="mt-5 container-fluid">
+    <form #gmrFrm="ngForm">
+    <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div>
+                    <div class="ms-5 form-floating" id="clientLabel">
+                        <select  #client="ngModel" (change)="changeclient(selectedClient)" style="width:auto;" class="form-select form-select-lg w-75"
+                            aria-label=".form-select-lg example" name="clientId" [(ngModel)]="selectedClient" required>
+                            <option *ngFor='let item of clients' [ngValue]="item">
+                                {{item.Name}}
+                            </option>
+
+                        </select>
+                        <label for="clientLabel">Select Client</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div>
+                    <div class="ms-5 form-floating" id="orderLabel">
+                        <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;" class="form-select form-select-lg w-75"
+                            aria-label=".form-select-lg example" name="orderid" [(ngModel)]="selectedorder" required>
+                            <option *ngFor='let item of orders' [ngValue]="item">
+                                {{item.Name}}
+                            </option>
+
+                        </select>
+                        <label for="orderLabel">Select Order</label>
+
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</form>
 </div>
