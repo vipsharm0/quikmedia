@@ -1,10 +1,11 @@
 <qk-errors #toastmsg type="toast" text="No Data Found"></qk-errors>
 <div class="mt-5 container-fluid">
     <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
+        <div><div class="ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div></div>
     <div class="row">
             <div class="col-3">
                 <div class="form-group">
-                    <div class="ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div>
+                    
                     <div class="ms-5 form-floating" id="clientLabel">
                         <select  #client="ngModel" (change)="changeclient(selectedClient)" style="width:auto;" class="form-select form-select-lg w-75"
                             aria-label=".form-select-lg example" name="clientId" [(ngModel)]="selectedClient" required>
@@ -36,7 +37,10 @@
                 </div>
             </div>
             <div class="d-grid gap-1 col-2">
-                <button type="submit" class="btn btn-primary btn-lg">Search</button>
+                <button type="submit" class="btn btn-primary btn-search btn-sm">Search</button>
+            </div>
+            <div class="d-grid ms-5 col-2" *ngIf="mprs">
+                <button type="button" class="btn btn-success btn-sm">Send to Uploader</button>
             </div>
         
     </div>
