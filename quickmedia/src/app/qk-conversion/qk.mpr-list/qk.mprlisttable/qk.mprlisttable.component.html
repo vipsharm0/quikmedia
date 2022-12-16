@@ -1,0 +1,26 @@
+<p-table [scrollable]="true" scrollHeight="400px" [value]="gridValues.data" styleClass="p-datatable-striped" styleClass="p-datatable-sm" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>No.</th>
+            <th pSortableColumn="QuikID">Code <p-sortIcon field="QuikID"></p-sortIcon></th>
+            <th pSortableColumn="Language">Language <p-sortIcon field="Language"></p-sortIcon></th>
+            <th pSortableColumn="Caption">Caption <p-sortIcon field="Caption"></p-sortIcon></th>
+            <th pSortableColumn="Brand">Brand <p-sortIcon field="Brand"></p-sortIcon></th>
+            <th pSortableColumn="SDHD">HD/SD <p-sortIcon field="SDHD"></p-sortIcon></th>
+            <th pSortableColumn="SpecCode">Specs Code <p-sortIcon field="SpecCode"></p-sortIcon></th>
+            <th pSortableColumn="OutPutURL">Link <p-sortIcon field="OutPutURL"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element let-rowIndex="rowIndex">
+        <tr>
+            <td>{{rowIndex + 1}}</td>
+            <td>{{element.QuikID}}</td>
+            <td>{{element.Language}}</td>
+            <td>{{element.Caption}}</td>
+            <td>{{element.Brand}}</td>
+            <td>{{element.SDHD}}</td>
+            <td>{{element.SpecCode}}</td>
+            <td>{{element.OutPutURL}}</td>
+        </tr>
+    </ng-template>
+</p-table>

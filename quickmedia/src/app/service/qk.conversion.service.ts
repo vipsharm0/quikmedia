@@ -24,10 +24,18 @@ export class QkConversionService {
     .set('userid', username)
     return this.http.get(url, {params})
   }
-  getorders(clientId:number=1){
+  getorders(clientId:number=0){
     const url = urlConstants.getorders;
     let params = new HttpParams()
     .set('clientId', clientId)
+    return this.http.get(url, {params})
+  }
+
+  getMprs(clientId:number=0, orderId:number=0){
+    const url = urlConstants.getMpr;
+    let params = new HttpParams()
+    .set('clientId', clientId)
+    .set('compaignID', orderId)
     return this.http.get(url, {params})
   }
 

@@ -1,14 +1,21 @@
 export class mpr{
     id:number;
-    quickid:string;
-    language:string;
-    caption:string;
-    brand:string;
-    duration:number;
-    type:string;
-    specscode:string;
-    link:string;
+    QuikID:string;
+    Language:string;
+    Caption:string;
+    Brand:string;
+    Dur:number;
+    SDHD:string;
+    SpecCode:string;
+    OutPutURL:string;
 }
+
+export class mprData{
+    data:mpr[];
+    errors:object[];
+    success:boolean;
+}
+
 
 export class client{
     Id:number
@@ -28,7 +35,6 @@ export class qkstate{
     key:string;  
     val: {};
 }
-
 
 export class gmr{
     brand:string;
@@ -69,8 +75,8 @@ export class gmrValidationData{
 }
 
 export class order{
-    Id:number
-    Name:string
+    Id:number;
+    Name:string;
 }
 export class OrderData{
     data:order[];

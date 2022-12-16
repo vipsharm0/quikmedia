@@ -1,5 +1,6 @@
+<qk-errors #toastmsg type="toast" text="No Data Found"></qk-errors>
 <div class="mt-5 container-fluid">
-    <form #gmrFrm="ngForm">
+    <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
     <div class="row">
             <div class="col-3">
                 <div class="form-group">
@@ -19,10 +20,11 @@
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div>
+                    <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
                     <div class="ms-5 form-floating" id="orderLabel">
                         <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;" class="form-select form-select-lg w-75"
                             aria-label=".form-select-lg example" name="orderid" [(ngModel)]="selectedorder" required>
+                            <option value=""></option>
                             <option *ngFor='let item of orders' [ngValue]="item">
                                 {{item.Name}}
                             </option>
@@ -33,7 +35,14 @@
                     </div>
                 </div>
             </div>
+            <div class="d-grid gap-1 col-2">
+                <button type="submit" class="btn btn-primary btn-lg">Search</button>
+            </div>
         
     </div>
 </form>
+</div>
+
+<div *ngIf="mprs" class="mt-5 container-fluid">
+    <qk-mprlisttable [gridValues]="mprData"></qk-mprlisttable>
 </div>

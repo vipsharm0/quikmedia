@@ -55,10 +55,8 @@ export class QkConversionComponent implements OnInit {
           this.gmrValidationData = response;
         }else{
           this.showmsg = true
-           this.toastcomp.showBottomCenter("Mpr Created Successfully");
+           this.toastcomp.showsuccess("Mpr Created Successfully");
         }
-        // console.log(JSON.stringify(response));
-        // this.gmrValidationData = response;
       },
       error:errResp=>{
 
