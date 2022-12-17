@@ -7,7 +7,14 @@ div{
 .footer{
 
 }
-.content{
+.body-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body-img{
+    margin-top: 10%;
+    height: 300px;
 }
 .dashboard-container{
 overflow: hidden;

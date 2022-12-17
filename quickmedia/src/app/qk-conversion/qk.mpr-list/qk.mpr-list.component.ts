@@ -60,9 +60,8 @@ set selectedColumns(val: any[]) {
 }
 
 changeclient(client:client){
-  console.log(JSON.stringify(client))
   this.orderDisabled = false;
-  this.orders = this.orders.filter( dt => dt.Id == client.Id)  
+  this.orders = this.orders.filter( dt => dt.ClientID == client.Id)  
 }
 
 searchMpr(){
@@ -74,6 +73,7 @@ searchMpr(){
         this.mprs = respData.data
       }else{
         this.toastcomp.showerror("No Data Found");
+        this.mprs = null;
       }
       
     },

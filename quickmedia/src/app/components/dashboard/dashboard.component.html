@@ -1,3 +1,4 @@
+<qk-errors #toastmsg type="toast"></qk-errors>
 <div>
     <div class="dashboard-container container-fluid">
         <div class="">
@@ -12,7 +13,7 @@
                     <div class="col-4"></div>
                     <div class="col-4">
                         <div class="row header-right-section">
-                            <div class="col-8 dashboard-welcome-text">Welcome, User</div>
+                            <div class="col-8 dashboard-welcome-text">Welcome, {{userName}}</div>
                             <div class="col-4 dashboard-logout-section">
                                 <a routerLink="/login"><i class="bi bi-box-arrow-left glyph logout-glyph"></i></a>
                                 <div class="dashboard-logout-text"><a routerLink="/">Logout</a></div>
@@ -43,84 +44,68 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/dashboard/{{conversiontext}}">Home</a>
+                        <a class="nav-link active" aria-current="page" routerLink="/dashboard/{{loggedUser}}">Home</a>
                     </li>
                    
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["conversion"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{menudata["conversion"]}}
+                            Conversion
+                            <!-- {{menudata["conversion"]}} -->
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["conversion"] && menudata["conversionList"].length > 0'>
                             <span *ngFor='let item of menudata["conversionList"]'>
-                                <li>
+                               
+                                <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                              
                             </span>
-                            <!-- <li><a class="dropdown-item" [routerLink]="['conversion']">Upload Gmr</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">View Order</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" [routerLink]="['conversion/mprlist']">Mpr</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" [routerLink]="['conversion/execute']">Upload Input Tvc</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Conversion Status</a></li> -->
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["admin"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{menudata["admin"]}}
+                            Admin
+                            <!-- {{menudata["admin"]}} -->
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["admin"] && menudata["adminList"].length > 0'>
                             <span *ngFor='let item of menudata["adminList"]'>
-                                <li>
+                        
+                                <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                
                             </span>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["invoicing"]'>
-                        <a class="nav-link" routerLink="/dashboard">{{menudata["invoicing"]}}</a>
+                        <a class="nav-link" routerLink="/dashboard">
+                            Invoicing
+                            <!-- {{menudata["invoicing"]}} -->
+                        </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["invoicing"] && menudata["invoicingList"].length > 0'>
                             <span *ngFor='let item of menudata["invoicingList"]'>
-                                <li>
+                               <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                               
                             </span>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["reporting"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{menudata["reporting"]}}
+                            Reporting
+                            <!-- {{menudata["reporting"]}} -->
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["reporting"] && menudata["reportingList"].length > 0'>
                             <span *ngFor='let item of menudata["reportingList"]'>
-                                <li>
+                             <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                               
                             </span>
                         </ul>
                     </li>
@@ -135,6 +120,15 @@
             </div>
         </div>
     </nav>
+    <!-- <div class="body-text">
+        <img class="rounded body-img" src="../../../assets/images/quiklogo.png" alt="...">
+      </div> -->
+    <!-- <div class="row" style="border:1px solid red ;">
+        <div style="border:1px solid green ;">
+            <img src="../../../assets/images/quiklogo.png" class="rounded float-start" alt="...">
+        </div>
+    </div> -->
+    
     <div class="content">
         <router-outlet></router-outlet>
     </div>

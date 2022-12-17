@@ -40,13 +40,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  
-    this._loginservice.getuser("admin").subscribe({
-      next:(respObj: UserData) => {
-        this.test = 2;
-      }
-    })
-
 
     $('.input100').on('blur', function () {
       if ($('.input100').val().trim() != "") {

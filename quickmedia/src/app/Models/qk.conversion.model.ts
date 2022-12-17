@@ -77,6 +77,7 @@ export class gmrValidationData{
 export class order{
     Id:number;
     Name:string;
+    ClientID:number;
 }
 export class OrderData{
     data:order[];

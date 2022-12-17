@@ -28,6 +28,9 @@ export class QkErrorsComponent implements OnInit, OnDestroy {
     this.messageService.add({ key: 'br', life: 4000, severity: 'error', summary: 'Error', detail: message });
   }
 
+  clear() {
+    this.messageService.clear();
+  }
   ngOnDestroy() {
   }
 

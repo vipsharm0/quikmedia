@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { client, gmrValidationData, qkState } from '../Models/qk.conversion.model';
+import { client, gmrValidationData, order, qkState } from '../Models/qk.conversion.model';
 import { QkConversionService } from '../service/qk.conversion.service';
 import { QkLoginService } from '../service/qk.login.service';
 
@@ -54,12 +54,22 @@ export class QkConversionComponent implements OnInit {
         if(!response.success){
           this.gmrValidationData = response;
         }else{
-          this.showmsg = true
+          this.gmrValidationData = null;
            this.toastcomp.showsuccess("Mpr Created Successfully");
+           this.ConversionService.getorders().subscribe({
+            next:(response)=>{
+              const orderDetails:order[] = response["data"] 
+              this._stateservice.updateState("orders", orderDetails)      
+            },
+            error:(errResponse)=>{
+              this.toastcomp.showerror("Exception Occured");
+            }
+           })
         }
+        this.gmrfrm.reset()
       },
       error:errResp=>{
-
+        this.gmrfrm.reset()
       }
     });
   }
