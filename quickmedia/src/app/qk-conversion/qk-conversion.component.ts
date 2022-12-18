@@ -52,7 +52,13 @@ export class QkConversionComponent implements OnInit {
     this.ConversionService.uploadfiles(filelist, true, this.selectedClient).subscribe({
       next:(response:gmrValidationData)=>{
         if(!response.success){
-          this.gmrValidationData = response;
+          if(response.errors.length > 0){
+            this.gmrValidationData = response;
+          }
+          else{
+            this.toastcomp.showerror(response.message);
+          }
+          
         }else{
           this.gmrValidationData = null;
            this.toastcomp.showsuccess("Mpr Created Successfully");

@@ -71,6 +71,7 @@ export class gmrValidationData{
     data:any;
     success: boolean;
     errors: gmr[];
+    message:string;
 
 }
 
