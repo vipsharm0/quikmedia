@@ -33,6 +33,18 @@
         stroke-dashoffset: -124px;
     }
 }
+.upload-spinner{
+    position: fixed;
+    z-index: 999;
+    height: 1em;
+    width: 1em;
+    overflow: show;
+    margin: auto;
+    top: 380px;
+    left: 750px;
+    bottom: 50;
+    right: 50;
+}
 
 .progress-spinner {
     position: fixed;
@@ -58,3 +70,14 @@
   height: 100%;
   background-color: rgba(0,0,0,0.10);
 }
+
+.upload-spinner:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 210px;
+    left: 450px;
+    width: calc(100% - 900px);
+    height: 45%;
+    background-color: rgba(0,0,0,0.10);
+  }

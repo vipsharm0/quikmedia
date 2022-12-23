@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
   export class LoaderService {
 
     isLoading = new Subject<boolean>();
+    isUploading = new Subject<boolean>();
   
     constructor() {
     }
@@ -19,4 +20,12 @@ import { Subject } from 'rxjs';
     hide() {
        this.isLoading.next(false);
     }
+
+    showUploading() {
+      this.isUploading.next(true);
+   }
+ 
+   hideUploading() {
+      this.isUploading.next(false);
+   }
   }

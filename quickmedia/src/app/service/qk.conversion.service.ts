@@ -2,15 +2,53 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { client } from '../Models/qk.conversion.model';
 import { urlConstants } from 'src/constants/url.constants';
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QkConversionService {
-
+  private _bucket: S3Client;
+  public isBusy:boolean = false;
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    
+  }
+
+
+  async s3uploadFiles(file: File | null):Promise<any>{
+    if(file){
+      this._bucket = new S3Client(
+        {
+          credentials: {
+            accessKeyId: environment.AWS_ACCESS_KEY_ID,
+            secretAccessKey: environment.AWS_SECRET_ACCESS_KEY,
+          },
+          region: environment.AWS_REGION,
+        }
+      );
+      this.isBusy = true;
+      const params = {
+        Bucket: 'vid-ffmpeg',
+        Key: file.name,
+        Body: file,
+        ACL: 'public-read',
+        ContentType: file.type
+      };
+
+      try {
+        // const response = await this._bucket.send(new PutObjectCommand(params));
+        window.setTimeout(ab=>{
+          return Promise.resolve("response")
+        }, 9000)
+        
+      } catch(error) {
+        console.log("FAILURE", error);
+      }
+    }
+  }
 
   getUser() {
     let headers = new HttpHeaders().set('mode', 'no-cors');

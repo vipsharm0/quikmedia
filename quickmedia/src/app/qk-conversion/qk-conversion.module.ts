@@ -19,7 +19,6 @@ import { QkCommonModule } from '../shared/qk-common.module';
 import { QkGmrerrorlistComponent } from './qk.gmrerrorlist/qk.gmrerrorlist.component';
 import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlisttable.component';
 
-
 @NgModule({
   declarations: [
     QkConversionComponent,
@@ -40,7 +39,7 @@ import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlis
     DropdownModule,
     MessagesModule,
     MessageModule,
-    QkCommonModule
+    QkCommonModule,
   ]
 })
 export class QkConversionModule { }

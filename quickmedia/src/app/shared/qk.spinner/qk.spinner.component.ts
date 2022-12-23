@@ -10,6 +10,8 @@ import { LoaderService } from '../qk.spinner.service';
 export class QkSpinnerComponent implements OnInit {
   isLoading: Subject<boolean> = this.loaderService.isLoading;
 
+  isUploading: Subject<boolean> = this.loaderService.isUploading;
+  
   constructor(private loaderService: LoaderService) { }
 
   ngOnInit(): void {

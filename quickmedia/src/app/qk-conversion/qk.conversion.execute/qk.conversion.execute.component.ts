@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
+import { LoaderService } from 'src/app/shared/qk.spinner.service';
 
 @Component({
   selector: 'app-qk.conversion.execute',
@@ -8,9 +9,21 @@ import { QkConversionService } from 'src/app/service/qk.conversion.service';
 })
 export class QkConversionExecuteComponent implements OnInit {
   files: any[] = [];
-  constructor(private ConversionService: QkConversionService) { }
+  isUploaded:boolean = false;
+  constructor(private ConversionService: QkConversionService,
+    private _loaderService:LoaderService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(){
+    this._loaderService.hideUploading();
+  }
+
+  ngAfterViewInit(){
+    if(this.ConversionService.isBusy){
+       this._loaderService.showUploading();
+    }
   }
 
   fileBrowseHandler(ev: Event) {
@@ -26,9 +39,23 @@ export class QkConversionExecuteComponent implements OnInit {
 
   prepareFilesList(ev: Event) {
     let elem = ev.currentTarget as HTMLInputElement;
-    let filelist: FileList | null = elem.files;  
-    this.ConversionService.uploadfiles(filelist).subscribe(resp => {
-      // alert('file uploaded');
-    });
+    let filelist: FileList | null = elem.files;
+    
+    if(filelist){
+      this._loaderService.showUploading();
+      for(let i=0; i<filelist.length; i++){
+        
+        this.ConversionService.s3uploadFiles(filelist[i]).then(resp =>{
+          
+          window.setTimeout(ab=>{
+            this._loaderService.hideUploading();
+            this.ConversionService.isBusy = false;
+            this.isUploaded = true;            
+          }, 9000)
+        }
+        )
+      }
+       
+    }      
   }
 }

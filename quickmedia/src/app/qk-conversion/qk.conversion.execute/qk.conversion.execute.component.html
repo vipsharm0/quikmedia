@@ -1,19 +1,21 @@
-<div class="container-fluid">
-    <div class="container file-container">
-        <i class="bi bi-cloud-arrow-up"></i>
-        <!-- <div class="upload-text">Upload Gmr File</div> -->
-        <input 
-        accept="video/*"
-        (change)="fileBrowseHandler($event)" 
-        type="file" #fileDropRef appDnd 
-        id="fileDropRef" 
-        (fileDropped)="onFileDropped($event)" 
-        [isdropable]="true"
-        multiple
-        />
-        
-        <h4>Upload / Drag Input Tvc</h4>
-        <h3>or</h3>
-        <label classs="align-bottom" for="fileDropRef">Browse for file(s)</label>
+    <div class="container-fluid">
+        <div class="container file-container">
+            <i class="bi bi-cloud-arrow-up"></i>
+            <!-- <div class="upload-text">Upload Gmr File</div> -->
+            <input 
+            accept="video/*"
+            (change)="fileBrowseHandler($event)" 
+            type="file" #fileDropRef appDnd 
+            id="fileDropRef" 
+            (fileDropped)="onFileDropped($event)" 
+            [isdropable]="true"
+            multiple
+            />
+            
+            <h4>Upload / Drag Input Tvc</h4>
+            <h3>or</h3>
+            <label classs="align-bottom" for="fileDropRef">Browse for file(s)</label>
+        </div>
     </div>
-</div>
+
+
