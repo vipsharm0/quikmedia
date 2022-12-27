@@ -68,13 +68,14 @@ export class QkConversionComponent implements OnInit {
               this._stateservice.updateState("orders", orderDetails)      
             },
             error:(errResponse)=>{
-              this.toastcomp.showerror("Exception Occured");
+              this.toastcomp.showerror("Exception Occured while getting orders");
             }
            })
         }
         this.gmrfrm.reset()
       },
       error:errResp=>{
+        this.toastcomp.showerror("Exception Occured" + JSON.stringify(errResp));
         this.gmrfrm.reset()
       }
     });
