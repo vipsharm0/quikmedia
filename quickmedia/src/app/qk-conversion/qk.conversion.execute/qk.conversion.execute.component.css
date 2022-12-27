@@ -146,8 +146,7 @@ h3 {
     font-size: 50px;
 }
 
-:host ::ng-deep.test{
-    margin: 20px;
-    padding: 0px;
-    /* width: calc(100% - 900px); */
-}
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    border:3px solid red;
+    background-color: yellow;
+  }

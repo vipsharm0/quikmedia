@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { first, Subject, Subscription } from 'rxjs';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { LoaderService } from 'src/app/shared/qk.spinner.service';
 
@@ -9,11 +11,24 @@ import { LoaderService } from 'src/app/shared/qk.spinner.service';
 })
 export class QkConversionExecuteComponent implements OnInit {
   files: any[] = [];
-  isUploaded:boolean = false;
+  msgSubs:Subscription;
+  @ViewChild('toastmsg', {static: false}) private toastcomp;
+  // uploadedSuccessMsg:Subject<string>=this.ConversionService.uploadingMsg;
+
   constructor(private ConversionService: QkConversionService,
-    private _loaderService:LoaderService) { }
+    private _loaderService:LoaderService,
+    private elRef: DashboardComponent) { }
 
   ngOnInit(): void {
+    this.msgSubs = this.ConversionService.uploadingMsg
+    .pipe(first()).subscribe    
+    ((data:boolean)=>{
+      if (data){
+        this.elRef.videoUpload();
+        this.msgSubs.unsubscribe();
+      }
+      
+    })
   }
 
   ngOnDestroy(){
@@ -50,7 +65,7 @@ export class QkConversionExecuteComponent implements OnInit {
           window.setTimeout(ab=>{
             this._loaderService.hideUploading();
             this.ConversionService.isBusy = false;
-            this.isUploaded = true;            
+            this.ConversionService.setUploadingMsg(true)
           }, 9000)
         }
         )

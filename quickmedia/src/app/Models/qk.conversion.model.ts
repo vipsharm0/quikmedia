@@ -86,3 +86,34 @@ export class OrderData{
     errors: string[];
 
 }
+export class viewOrder{
+    Brand:string;
+    Caption:string;
+    ChannelDestination:string;
+    Channels:string;
+    Creative:string;
+    DateOfDelivery:Date;
+    Dur:number;
+    HD:string;
+    Language:string;
+    LocationType:string;
+    MediaAgency:string;
+    Name:string;
+    OrderNo:string;
+    OutPutURL:string;
+    Production:string;
+    QuikID:string;
+    QuikIDOutput:string;
+    SD:string;
+    SDHD:string;
+    ShortCaption:string;
+    SpecCode:string;
+    SpecNumber:string;
+}
+
+export class viewOrderData{
+    data:viewOrder[];
+    success: boolean;
+    message: string;
+    errors: string[];
+}

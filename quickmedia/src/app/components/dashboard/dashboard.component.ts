@@ -16,7 +16,7 @@ import { userModuleConstants } from "src/constants/usermodule.constants";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit,AfterViewInit  {
-  @ViewChild('toastmsg', {static: false}) private toastcomp;
+  @ViewChild('toastmssg', {static: false}) private toastcomp;
   menudata:object;
   loggedUser:string;
   userName:string;
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
       forkJoin([
         this._loginservice.getuser(loggeduser["user"]),
         this._conversionservice.getclients(loggeduser["user"]),
-        this._conversionservice.getorders()
+        this._conversionservice.getorders(),
       ]).subscribe({
         next:(response)=>{
           const userData:user = response[0]["data"] 
@@ -61,6 +61,10 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
 
   abc():string{
     return this._menuitems.getMenuBarHeading(userModuleConstants.conversion);
+  }
+
+  videoUpload(){
+    this.toastcomp.showsuccess("Videos Uploaded Successfully");
   }
 
   ngAfterViewInit() {

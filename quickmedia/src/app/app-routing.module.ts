@@ -21,6 +21,10 @@ const appRoutes: Routes = [
       {
         path: 'conversion',
         loadChildren: () => import('./qk-conversion/qk-conversion.module').then(x => x.QkConversionModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: () => import('./qk-orders/qk-orders.module').then(x => x.QkOrdersModule)
       }
     ]
   },

@@ -1,0 +1,75 @@
+<p-table [columns]="selectedColumns" 
+[responsive]="true" 
+[paginator]="true" [rows]="rows" [showCurrentPageReport]="true" 
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} records" 
+[rowsPerPageOptions]="[3,5,10]" 
+[scrollable]="true" scrollHeight="320px" 
+[resizableColumns]="true"
+[autoLayout]="true"
+[value]="gridValues" 
+styleClass="p-datatable-gridlines" 
+styleClass="p-datatable-lg" >
+    <ng-template pTemplate="caption">
+        <p-multiSelect [options]="orderCols" [(ngModel)]="selectedColumns" optionLabel="header"
+            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeholder="Choose Columns"></p-multiSelect>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr class="test" >
+            <th pSortableColumn="OrderNo">Order No. <p-sortIcon field="OrderNo"></p-sortIcon></th>
+            <th pSortableColumn="QuikID">QuikId <p-sortIcon field="QuikID"></p-sortIcon></th> 
+            <th pSortableColumn="Channels">Channels <p-sortIcon field="Channels"></p-sortIcon></th> 
+            <th pSortableColumn="ChannelDestination">Destination <p-sortIcon field="ChannelDestination"></p-sortIcon></th> 
+            <th pSortableColumn="Language">Language <p-sortIcon field="Language"></p-sortIcon></th>     
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <!-- <th pSortableColumn="Caption">Caption <p-sortIcon field="Caption"></p-sortIcon></th>
+            <th pSortableColumn="SpecNumber">Spec Number <p-sortIcon field="SpecNumber"></p-sortIcon></th>
+            <th pSortableColumn="Creative">Creative <p-sortIcon field="Creative"></p-sortIcon></th>
+            <th pSortableColumn="MediaAgency">Media Agency <p-sortIcon field="MediaAgency"></p-sortIcon></th>
+            <th pSortableColumn="Production">Production <p-sortIcon field="Production"></p-sortIcon></th>
+            <th pSortableColumn="QuikIDOutput">QuikID Output <p-sortIcon field="QuikIDOutput"></p-sortIcon></th> -->
+        </tr>    
+            <tr>
+                <th>
+                    <p-columnFilter class="OrderNo" type="text" field="OrderNo"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="QuikID"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="Channels"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="ChannelDestination"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="Language"></p-columnFilter>
+                </th>
+            </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element let-columns="columns">
+        <tr>
+            <td>{{element.OrderNo}}</td>
+            <td>{{element.QuikID}}</td>  
+            <td>{{element.Channels}}</td>
+            <td>{{element.ChannelDestination}}</td>  
+            <td>{{element.Language}}</td>
+            <td *ngFor="let col of columns">
+                {{element[col.field]}}
+            </td>
+            <!-- <td>{{element.Caption}}</td>
+            <td>{{element.SpecNumber}}</td>
+            <td>{{element.Creative}}</td>
+            <td>{{element.MediaAgency}}</td>
+            <td>{{element.Production}}</td>
+            <td>{{element.QuikIDOutput}}</td> -->
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-table>

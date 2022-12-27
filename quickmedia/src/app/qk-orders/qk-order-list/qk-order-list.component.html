@@ -1,0 +1,52 @@
+<qk-errors #orderlistmsg type="toast"></qk-errors>
+<div class="mt-5 container">
+    <form #gmrFrm="ngForm" (ngSubmit)="searchOrders()">
+        <div class="row no-gutters">
+
+            <div class="col-2">
+                <!-- <div class="form-group" >                     -->
+                <div class="form-floating" id="clientLabel">
+                    <select #client="ngModel" (change)="changeclient(selectedClient)" class="form-select form-select-lg"
+                        aria-label=".form-select-lg example" name="clientId" [(ngModel)]="selectedClient" required>
+                        <option *ngFor='let item of clients' [ngValue]="item">
+                            {{item.Name}}
+                        </option>
+
+                    </select>
+                    <label for="clientLabel">Select Client</label>
+
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="col-2">
+                <span class="qk-order-error help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</span>
+            </div>
+            <div class="col-3">
+                <!-- <div class="form-group"> -->
+                    <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
+                    <div class="form-floating" id="orderLabel">
+                        <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;"
+                            class="form-select form-select-lg w-75" aria-label=".form-select-lg example" name="orderid"
+                            [(ngModel)]="selectedorder" required>
+                            <option value=""></option>
+                            <option *ngFor='let item of orders' [ngValue]="item">
+                                {{item.Name}}
+                            </option>
+
+                        </select>
+                        <label for="orderLabel">Select Order</label>
+
+                    </div>
+                <!-- </div> -->
+            </div>
+            <div class="col">
+                <button type="submit" [disabled]="!client.valid" type="submit" class="btn btn-primary btn-search btn-lg qk-btn-oderlist-search">Search</button>
+            </div>
+
+        </div>
+    </form>
+    <div *ngIf="campaigns" class="qk-orderList-table">
+        <qk-orderlisttable [gridValues]="campaigns"></qk-orderlisttable>
+    </div>
+    
+</div>

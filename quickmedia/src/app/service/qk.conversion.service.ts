@@ -4,12 +4,14 @@ import { client } from '../Models/qk.conversion.model';
 import { urlConstants } from 'src/constants/url.constants';
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QkConversionService {
   private _bucket: S3Client;
+  uploadingMsg = new Subject<boolean>();
   public isBusy:boolean = false;
   constructor(
     private http: HttpClient
@@ -17,6 +19,9 @@ export class QkConversionService {
     
   }
 
+  setUploadingMsg(msgFlag: boolean = false){
+    this.uploadingMsg.next(msgFlag);
+  }  
 
   async s3uploadFiles(file: File | null):Promise<any>{
     if(file){
@@ -66,6 +71,14 @@ export class QkConversionService {
     const url = urlConstants.getorders;
     let params = new HttpParams()
     .set('clientId', clientId)
+    return this.http.get(url, {params})
+  }
+
+  getOrderList(clientId:number=0, campaignId:number=0){
+    const url = urlConstants.getOrderList;
+    let params = new HttpParams()
+    .set('clientId', clientId)
+    .set('compaignID', campaignId)
     return this.http.get(url, {params})
   }
 
