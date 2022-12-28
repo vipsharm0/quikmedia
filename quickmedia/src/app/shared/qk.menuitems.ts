@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
+import { MenuItem } from "primeng/api";
 import { BehaviorSubject, Subject } from "rxjs";
 import { userModuleConstants } from "src/constants/usermodule.constants";
-import { UserData } from "../Models/admin/qk.adminmodule.model";
+import { user, UserData } from "../Models/admin/qk.adminmodule.model";
 import { menuitem } from "./models/qk.common";
 
 @Injectable()
@@ -21,13 +22,19 @@ export class menuitems {
         "qp": userModuleConstants.qp
     };
 
-    getroles(data: UserData):object {
+    getroles(data: UserData, userFlag:boolean=false):object {
 
+        let uData:user;
+        if(userFlag){
+            uData = data.data[0];
+        }else{
+            uData = data[0];
+        }
         this.roleswithrights=[]
         let roles: string[] = [];
         for (let [keys, value] of Object.entries(this.filters)) {
-            let obj = Object.keys(data).filter((key) => {
-                if (key.includes(value) && data[key]) {
+            let obj = Object.keys(uData).filter((key) => {
+                if (key.includes(value) && uData[key]) {
                     roles.push(key);
                 }
             })

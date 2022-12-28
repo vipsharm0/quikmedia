@@ -19,6 +19,8 @@ export class QkOrderlisttableComponent implements OnInit {
       { field: 'Brand', header: 'Brand' },
       { field: 'Dur', header: 'Duration' },
       { field: 'SDHD', header: 'SD/HD' },
+      { field: 'SD', header: 'SD' },
+      { field: 'HD', header: 'HD' },
       { field: 'DateOfDelivery', header: 'Delievery Date' },
       { field: 'ShortCaption', header: 'Short Caption' },
       { field: 'OutPutURL', header: 'Output Url' },

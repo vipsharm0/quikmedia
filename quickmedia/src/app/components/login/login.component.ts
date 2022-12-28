@@ -70,7 +70,9 @@ export class LoginComponent implements OnInit {
         if (respObj.success) {          
           const passwd = this._utils.decryptdata(respObj.data[0].UserId, respObj.data[0].Password)
           if (passwd == formdata.value.password) {
-            // this._menuitems.getroles(respObj.data[0])           
+            // this._menuitems.getroles(respObj.data[0]) 
+             const menudata:object = this._menuitems.getroles(respObj, true); 
+             this._loginservice.updateState("rbac", menudata)          
              this.router.navigate(['/dashboard/'+formdata.value.username])
           } else {
             this.showError = true;

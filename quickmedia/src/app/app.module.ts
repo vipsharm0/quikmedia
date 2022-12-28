@@ -29,7 +29,7 @@ import { QkOrdersModule } from './qk-orders/qk-orders.module';
     HttpClientModule,
     RouterModule,
     QkCommonModule,
-    QkOrdersModule
+    QkOrdersModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

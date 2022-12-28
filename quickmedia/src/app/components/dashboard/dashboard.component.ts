@@ -1,6 +1,7 @@
 import { state } from '@angular/animations';
 import { AfterViewInit,Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import { forkJoin } from 'rxjs';
 import { user } from 'src/app/Models/admin/qk.adminmodule.model';
 import { client, order, qkstate, qkState } from 'src/app/Models/qk.conversion.model';
@@ -34,8 +35,7 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
   }
 
   
-  ngOnInit(): void {
- 
+  ngOnInit(): void {    
     this._activatedRouteSnapshot.params.subscribe(loggeduser=>{
       this.loggedUser = loggeduser["user"];
       forkJoin([
@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
         next:(response)=>{
           const userData:user = response[0]["data"] 
           this.userName = userData[0].FirstName
-          this.menudata = this._menuitems.getroles(response[0]["data"][0]);
+          this.menudata = this._menuitems.getroles(response[0]["data"]);
           const clientDetails:client[] = response[1]["data"] 
           const orderDetails:order[] = response[2]["data"]         
           this._loginservice.updateState("clients", clientDetails)   
