@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'dashboard/:user',
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
       {

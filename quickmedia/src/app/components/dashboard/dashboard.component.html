@@ -14,7 +14,7 @@
                     <div class="col-4"></div>
                     <div class="col-4">
                         <div class="row header-right-section">
-                            <div class="col-8 dashboard-welcome-text">Welcome, {{userName}}</div>
+                            <div class="col-8 dashboard-welcome-text">Welcome, {{loggedUser}}</div>
                             <div class="col-4 dashboard-logout-section">
                                 <a routerLink="/login"><i class="bi bi-box-arrow-left glyph logout-glyph"></i></a>
                                 <div class="dashboard-logout-text"><a routerLink="/">Logout</a></div>
@@ -45,13 +45,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/dashboard/{{loggedUser}}">Home</a>
+                        <a class="nav-link active" aria-current="page" routerLink="/dashboard">Home</a>
                     </li>               
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["conversion"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Conversion
-                            <!-- {{menudata["conversion"]}} -->
+                            {{menudata["conversion"]}}
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["conversion"] && menudata["conversionList"].length > 0'>
                             <span *ngFor='let item of menudata["conversionList"]'>
@@ -81,17 +80,19 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["invoicing"]'>
-                        <a class="nav-link" routerLink="/dashboard">
-                            Invoicing
-                            <!-- {{menudata["invoicing"]}} -->
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{menudata["invoicing"]}}
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["invoicing"] && menudata["invoicingList"].length > 0'>
                             <span *ngFor='let item of menudata["invoicingList"]'>
-                               <li class="pt-2">
+                               
+                                <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                               
+                              
                             </span>
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["reporting"]'>

@@ -133,7 +133,7 @@ export class menuitems {
         {
             role: this.filters.superAdmin,
             rights: [
-                { menuid: [1], data: [1,2,3] }
+                { menuid: [1,3], data: [1,2,3] }
             ]
         },
         {
@@ -182,7 +182,7 @@ export class menuitems {
 
     private menus: menuitem[] = [
         { "id":1, "menuid": userModuleConstants.conversion, "name": "Upload Gmr", "url": "conversion" },
-        { "id":2, "menuid": userModuleConstants.conversion, "name": "View Order", "url": "orders" },
+        { "id":2, "menuid": userModuleConstants.invoicing, "name": "View Order", "url": "orders" },
         { "id":3, "menuid": userModuleConstants.conversion, "name": "Mpr", "url": "conversion/mprlist" },
         { "id":4, "menuid": userModuleConstants.conversion, "name": "Upload Input Tvc", "url": "conversion/execute" },
         { "id":5, "menuid": userModuleConstants.conversion, "name": "Conversion Status", "url": "vipin3" },

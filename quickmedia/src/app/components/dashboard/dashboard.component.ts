@@ -19,11 +19,13 @@ import { userModuleConstants } from "src/constants/usermodule.constants";
 export class DashboardComponent implements OnInit,AfterViewInit  {
   @ViewChild('toastmssg', {static: false}) private toastcomp;
   menudata:object;
-  loggedUser:string;
+  user:object;
   userName:string;
   role:string;
+  loggedUser:string;
 
   constructor(
+    public router: Router,
     private _menuitems: menuitems,
     private _loginservice:QkLoginService,
     private _conversionservice:QkConversionService,
@@ -35,18 +37,38 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
   }
 
   
-  ngOnInit(): void {    
-    this._activatedRouteSnapshot.params.subscribe(loggeduser=>{
-      this.loggedUser = loggeduser["user"];
+  ngOnInit(): void {
+    this._loginservice.appState.subscribe(data => {
+      if (data) {
+        const user = data.filter(dt => dt.key == "userdata")
+        const rbacList = data.filter(dt => dt.key == "rbac")
+
+        if (user && user.length) {
+          this.user = user[0].val;
+          this.loggedUser = this.user["UserId"];
+
+          if (rbacList && rbacList.length) {
+            this.menudata = rbacList[0].val;
+            //  console.log("this.menudata  = " + JSON.stringify(this.menudata));
+          } else {
+            this.router.navigate(['/'])
+          }
+        } else {
+          this.router.navigate(['/'])
+        }
+      }
+    })
+    // this._activatedRouteSnapshot.params.subscribe(loggeduser=>{
+    //   this.loggedUser = loggeduser["user"];
       forkJoin([
-        this._loginservice.getuser(loggeduser["user"]),
-        this._conversionservice.getclients(loggeduser["user"]),
+        this._loginservice.getuser(this.loggedUser),
+        this._conversionservice.getclients(this.loggedUser),
         this._conversionservice.getorders(),
       ]).subscribe({
         next:(response)=>{
-          const userData:user = response[0]["data"] 
-          this.userName = userData[0].FirstName
-          this.menudata = this._menuitems.getroles(response[0]["data"]);
+          // const userData:user = response[0]["data"] 
+          // this.userName = userData[0].FirstName
+          // this.menudata = this._menuitems.getroles(response[0]["data"]);
           const clientDetails:client[] = response[1]["data"] 
           const orderDetails:order[] = response[2]["data"]         
           this._loginservice.updateState("clients", clientDetails)   
@@ -56,7 +78,7 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
           this.toastcomp.showerror("Exception occured");
         }
       })  
-    })
+    // })
    }
 
   abc():string{
