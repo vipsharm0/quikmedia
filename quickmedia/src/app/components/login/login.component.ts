@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   passwordValidationflag!: Boolean;
   constants: any = userModuleConstants;
 
+
   @ViewChild('f') loginfrm!: NgForm;
 
   constructor(
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
              const menudata:object = this._menuitems.getroles(respObj, true); 
              this._loginservice.updateState("rbac", menudata)     
              this._loginservice.updateState("userdata", respObj.data[0])       
-             this.router.navigate(['/dashboard'])
+             this.router.navigate(['dashboard/profile'])
           } else {
             this.showError = true;
             formdata.reset();

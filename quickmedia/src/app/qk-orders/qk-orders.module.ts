@@ -9,6 +9,7 @@ import { QkOrderlisttableComponent } from './qk-order-list/qk-orderlisttable/qk-
 import { FieldsetModule } from 'primeng/fieldset';
 import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
+import { PanelModule } from 'primeng/panel';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {ButtonModule} from 'primeng/button';
     FieldsetModule,
     TableModule,
     MultiSelectModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
   ]
 })
 export class QkOrdersModule { }

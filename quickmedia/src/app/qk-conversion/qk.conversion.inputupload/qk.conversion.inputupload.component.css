@@ -1,5 +1,6 @@
+
 .container-fluid{
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 .container {
      width: calc(100% - 900px); 
@@ -17,7 +18,7 @@
     margin-top: 10px;
 }
 
-input {
+.uploader {
     opacity: 0;
     position: absolute;
     z-index: 2;
@@ -27,7 +28,7 @@ input {
     left: 0;
 }
 
-label {
+label.align-bottom {
     color: white;
     width: 183px;
     height: 44px;
@@ -145,8 +146,8 @@ h3 {
 .bi-cloud-arrow-up{
     font-size: 50px;
 }
-
+/* 
 :host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
     border:3px solid red;
     background-color: yellow;
-  }
+  } */

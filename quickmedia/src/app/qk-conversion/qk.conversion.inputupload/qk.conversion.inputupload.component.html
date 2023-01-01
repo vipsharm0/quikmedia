@@ -1,0 +1,106 @@
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Email / Whatsapp</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p-panel header="Send Email" [toggleable]="true">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">To:</label>
+                  <input type="text" class="form-control" id="emailto">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">CC:</label>
+                  <input type="text" class="form-control" id="emailcc">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Subject:</label>
+                    <input type="text" class="form-control" id="emailsubject">
+                  </div>
+        </p-panel>
+        <p-panel header="Whatsapp message" [toggleable]="true">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Mobile No.</label>
+              <input type="text" class="form-control" id="emailto">
+            </div>            
+    </p-panel>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p-panel header="Mpr List" [toggleable]="true">
+    <div class="container-fluid">
+        <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
+            <div>
+                <div class="qk-mprlist-error ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please
+                    select client</div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-3">
+                    <div class="form-group">
+
+                        <div class="ms-5 form-floating" id="clientLabel">
+                            <select #client="ngModel" (change)="changeclient(selectedClient)" style="width:auto;"
+                                class="form-select form-select-lg w-75" aria-label=".form-select-lg example"
+                                name="clientId" [(ngModel)]="selectedClient" required>
+                                <option *ngFor='let item of clients' [ngValue]="item">
+                                    {{item.Name}}
+                                </option>
+
+                            </select>
+                            <label for="clientLabel">Select Client</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
+                        <div class="ms-5 form-floating" id="orderLabel">
+                            <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;"
+                                class="form-select form-select-lg w-75" aria-label=".form-select-lg example"
+                                name="orderid" [(ngModel)]="selectedorder" required>
+                                <option value=""></option>
+                                <option *ngFor='let item of orders' [ngValue]="item">
+                                    {{item.Name}}
+                                </option>
+
+                            </select>
+                            <label for="orderLabel">Select Order</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-1 col-1">
+                    <button type="submit" [disabled]="!client.valid"
+                        class="btn btn-primary btn-search btn-sm">Search</button>
+                </div>
+                <div class="d-grid ms-5 col-1">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">Send Preview</button>
+                </div>
+
+            </div>
+        </form>       
+        <app-qk-inputuploadtable></app-qk-inputuploadtable>
+    </div>
+</p-panel>
+<p-panel header="Upload Input Tvc" [toggleable]="true">
+    <div class="container-fluid">
+        <div class="container file-container">
+            <i class="bi bi-cloud-arrow-up"></i>
+            <!-- <div class="upload-text">Upload Gmr File</div> -->
+            <input (change)="fileBrowseHandler($event)" type="file" #fileDropRef appDnd id="fileDropRef"
+                class="uploader" (fileDropped)="onFileDropped($event)" [isdropable]="true" webkitdirectory multiple />
+
+            <h4>Upload / Drag Input Tvc</h4>
+            <h3>or</h3>
+            <label class="align-bottom" for="fileDropRef">Browse for file(s)</label>
+        </div>
+    </div>
+</p-panel>

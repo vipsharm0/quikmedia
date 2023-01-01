@@ -1,17 +1,28 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { first, Subject, Subscription } from 'rxjs';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { client, order } from 'src/app/Models/qk.conversion.model';
 import { QkConversionService } from 'src/app/service/qk.conversion.service';
 import { LoaderService } from 'src/app/shared/qk.spinner.service';
 
+
 @Component({
   selector: 'app-qk.conversion.execute',
-  templateUrl: './qk.conversion.execute.component.html',
-  styleUrls: ['./qk.conversion.execute.component.css']
+  templateUrl: './qk.conversion.inputupload.component.html',
+  styleUrls: ['./qk.conversion.inputupload.component.css']
 })
 export class QkConversionExecuteComponent implements OnInit {
+  emailTo:string;
+  emailCc:string;
+  emailSubject:string;
+  visibleSidebar:boolean;
   files: any[] = [];
   msgSubs:Subscription;
+  clients:client[];
+  orders:order[];
+  orderDisabled:boolean=true;
+  selectedClient:client;
+  selectedorder:order;
   @ViewChild('toastmsg', {static: false}) private toastcomp;
   // uploadedSuccessMsg:Subject<string>=this.ConversionService.uploadingMsg;
 
@@ -30,7 +41,18 @@ export class QkConversionExecuteComponent implements OnInit {
       
     })
   }
+  test(){
+    alert('hi')
+  }
+  changeclient(client:client){
+    // this.orderDisabled = false;
+    // this.orders = this.orders.filter( dt => dt.ClientID == client.Id)  
+  }
 
+  searchOrders(){
+
+  }
+  searchMpr(){}
   ngOnDestroy(){
     this._loaderService.hideUploading();
   }

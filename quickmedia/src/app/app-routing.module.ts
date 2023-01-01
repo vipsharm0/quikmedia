@@ -25,13 +25,13 @@ const appRoutes: Routes = [
       {
         path: 'orders',
         loadChildren: () => import('./qk-orders/qk-orders.module').then(x => x.QkOrdersModule)
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       }
     ]
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  },
+  }
 
 ];
 

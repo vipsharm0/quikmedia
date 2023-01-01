@@ -133,7 +133,7 @@ export class menuitems {
         {
             role: this.filters.superAdmin,
             rights: [
-                { menuid: [1,3], data: [1,2,3] }
+                { menuid: [1,3], data: [1,2,3,4] }
             ]
         },
         {

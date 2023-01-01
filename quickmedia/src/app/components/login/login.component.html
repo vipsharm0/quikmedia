@@ -2,7 +2,7 @@
 <div class="fluid-container">
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100">                
+            <div class="wrap-login100">
                 <form class="login100-form validate-form" (ngSubmit)="loginSubmit(f)" #f="ngForm">
                     <span class="login100-form-title p-b-26">
                         Welcome
@@ -12,17 +12,20 @@
                     </span>
                     <div class="container-quiklogo">
                         <img class="quiklogo" src="../assets/images/quiklogo.png" alt="">
-                    </div>                    
-                    <div [ngClass]="{'validation' : usernameValidationflag}" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                    </div>
+                    <div [ngClass]="{'validation' : usernameValidationflag}" class="wrap-input100 validate-input"
+                        data-validate="Valid email is: a@b.c">
                         <input (blur)="userblur($event)" class="input100" type="text" name="username" ngModel required>
                         <span class="focus-input100" data-placeholder="Username"></span>
                     </div>
 
-                    <div [ngClass]="{'validation' : passwordValidationflag}" class="wrap-input100 validate-input" data-validate="Enter password">
+                    <div [ngClass]="{'validation' : passwordValidationflag}" class="wrap-input100 validate-input"
+                        data-validate="Enter password">
                         <span class="btn-show-pass">
                             <i class="zmdi zmdi-eye"></i>
                         </span>
-                        <input (blur)="userblur($event)" class="input1001" type="password" name="password" ngModel required>
+                        <input (blur)="userblur($event)" class="input1001" type="password" name="password" ngModel
+                            required>
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 

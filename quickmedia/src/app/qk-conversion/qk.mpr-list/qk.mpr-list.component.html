@@ -1,5 +1,6 @@
 <qk-errors #toastmsg type="toast" text="No Data Found"></qk-errors>
-<div class="mt-5 container-fluid">
+<p-panel header="Mpr List" [toggleable]="true">
+<div class="mt-2 mb-2 container-fluid">
     <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
         <div><div class="qk-mprlist-error ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div></div>
     <div class="row">
@@ -36,17 +37,20 @@
                     </div>
                 </div>
             </div>
-            <div class="d-grid gap-1 col-2">
+            <div class="d-grid gap-1 col-1">
                 <button type="submit" [disabled]="!client.valid" class="btn btn-primary btn-search btn-sm">Search</button>
             </div>
             <div class="d-grid ms-5 col-2" *ngIf="mprs">
                 <button type="button" class="btn btn-success btn-sm">Send to Uploader</button>
             </div>
+            <div class="d-grid ms-5 col-1">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">View Order</button>
+            </div>
         
     </div>
 </form>
 </div>
-
+</p-panel>
 <div *ngIf="mprs" class="mt-5 container-fluid">
     <qk-mprlisttable [gridValues]="mprData"></qk-mprlisttable>
 </div>

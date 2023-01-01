@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QkConversionExecuteComponent } from './qk.conversion.execute.component';
+import { QkConversionExecuteComponent } from './qk.conversion.inputupload.component';
 
 describe('QkConversionExecuteComponent', () => {
   let component: QkConversionExecuteComponent;

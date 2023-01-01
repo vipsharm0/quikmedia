@@ -51,17 +51,17 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
             this.menudata = rbacList[0].val;
             //  console.log("this.menudata  = " + JSON.stringify(this.menudata));
           } else {
-            this.router.navigate(['/'])
+            this.router.navigate(['/login'])
           }
         } else {
-          this.router.navigate(['/'])
+          this.router.navigate(['/login'])
         }
       }
     })
     // this._activatedRouteSnapshot.params.subscribe(loggeduser=>{
     //   this.loggedUser = loggeduser["user"];
       forkJoin([
-        this._loginservice.getuser(this.loggedUser),
+        // this._loginservice.getuser(this.loggedUser),
         this._conversionservice.getclients(this.loggedUser),
         this._conversionservice.getorders(),
       ]).subscribe({
@@ -69,8 +69,8 @@ export class DashboardComponent implements OnInit,AfterViewInit  {
           // const userData:user = response[0]["data"] 
           // this.userName = userData[0].FirstName
           // this.menudata = this._menuitems.getroles(response[0]["data"]);
-          const clientDetails:client[] = response[1]["data"] 
-          const orderDetails:order[] = response[2]["data"]         
+          const clientDetails:client[] = response[0]["data"] 
+          const orderDetails:order[] = response[1]["data"]         
           this._loginservice.updateState("clients", clientDetails)   
            this._loginservice.updateState("orders", orderDetails)   
         },

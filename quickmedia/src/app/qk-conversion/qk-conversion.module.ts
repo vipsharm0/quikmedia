@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule, } from 'primeng/fieldset';
-import { QkConversionExecuteComponent } from './qk.conversion.execute/qk.conversion.execute.component';
+import { QkConversionExecuteComponent } from './qk.conversion.inputupload/qk.conversion.inputupload.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { QkCommonModule } from '../shared/qk-common.module';
 import { QkGmrerrorlistComponent } from './qk.gmrerrorlist/qk.gmrerrorlist.component';
 import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlisttable.component';
+import { QkInputuploadtableComponent } from './qk.conversion.inputupload/qk.inputuploadtable/qk.inputuploadtable.component';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlis
     QkMprListComponent,
     QkConversionExecuteComponent,
     QkGmrerrorlistComponent,
-    QkMprlisttableComponent
+    QkMprlisttableComponent,
+    QkInputuploadtableComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +43,7 @@ import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlis
     MessagesModule,
     MessageModule,
     QkCommonModule,
+    PanelModule
   ]
 })
 export class QkConversionModule { }
