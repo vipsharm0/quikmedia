@@ -1,8 +1,42 @@
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Channel</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p-panel header="Channel Details" [toggleable]="false">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Caption</label>
+                    <input type="text" class="form-control" id="emailto">
+                  </div>
+                  <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Duration</label>
+                    <input type="text" class="form-control" id="emailcc">
+                  </div>
+                  <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Language</label>
+                      <input type="text" class="form-control" id="emailsubject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">HD/SD</label>
+                        <input type="text" class="form-control" id="emailsubject">
+                      </div>
+          </p-panel>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <qk-errors #orderlistmsg type="toast"></qk-errors>
-<p-panel header="Mpr List" [toggleable]="true">
+<p-panel header="Campaign List" [toggleable]="true">
     <div class="mt-2 mb-2 container-fluid">
         <form #gmrFrm="ngForm" (ngSubmit)="searchOrders()">
-            <div class="row no-gutters">
+            <div class="row">
 
                 <div class="col-2">
                     <!-- <div class="form-group" >                     -->
@@ -41,16 +75,18 @@
 
                     </div>
                     <!-- </div> -->
-                </div>
-                <div class="col">
+                </div>               
+                <div class="ms-5 col-1 d-grid">
                     <button type="submit" [disabled]="!client.valid" type="submit"
-                        class="btn btn-primary btn-search btn-lg qk-btn-oderlist-search">Search</button>
+                        class="btn btn-primary btn-sm btn-search qk-btn-oderlist-search">Search</button>
                 </div>
-                <div class="col">
-                    <button type="submit" [disabled]="!client.valid" type="submit"
-                        class="btn btn-success btn-search btn-lg qk-btn-oderlist-search">View Mpr</button>
+                <div class="ms-5 col-1 d-grid">
+                    <button type="button" [disabled]="!client.valid" type="button"
+                        class="btn btn-success  btn-sm qk-btn-oderlist-search">View Mpr</button>
                 </div>
-
+                <div class="ms-5 col-1 d-grid">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="!client.valid" class="btn btn-success btn-sm"><i class="bi bi-plus-square-dotted qk-btn-oderlist-addchannel"></i>Channel</button>
+                </div>
             </div>
         </form>
 

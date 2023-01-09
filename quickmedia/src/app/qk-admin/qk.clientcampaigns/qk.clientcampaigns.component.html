@@ -1,0 +1,60 @@
+<p-panel header="Manage Campaigns" [toggleable]="true">
+    <div class="mt-2 mb-2 container-fluid">
+        <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
+            <div><div class="qk-mprlist-error ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div></div>
+        <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        
+                        <div class="ms-5 form-floating" id="clientLabel">
+                            <select  #client="ngModel" (change)="changeclient(selectedClient)" style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="clientId" [(ngModel)]="selectedClient" required>
+                                <option *ngFor='let item of clients' [ngValue]="item">
+                                    {{item.Name}}
+                                </option>    
+                            </select>
+                            <label for="clientLabel">Select Campaign</label>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
+                        <div class="ms-5 form-floating" id="orderLabel">
+                            <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="orderid" [(ngModel)]="selectedorder" required>
+                                <option value=""></option>
+                                <option *ngFor='let item of orders' [ngValue]="item">
+                                    {{item.Name}}
+                                </option>
+    
+                            </select>
+                            <label for="orderLabel">Select Campaign</label>
+    
+                        </div>
+                    </div>
+                </div>            
+                
+                <div class="d-grid col-1">
+                    <button type="submit" [disabled]="!client.valid" class="btn btn-primary btn-search btn-sm">Search</button>
+                </div>
+                <div class="col-1 d-grid " *ngIf="mprs">
+                    <div class="btn-group">
+                        <button  data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success btn-sm ">Execute</button>
+                        <button type="button" class="btn btn-action btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">View Order</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Hold</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                </div>
+        </div>
+    </form>
+    </div>
+    </p-panel>

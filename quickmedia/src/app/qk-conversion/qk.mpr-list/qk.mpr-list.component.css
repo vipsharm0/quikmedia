@@ -7,3 +7,10 @@
 .qk-mprlist-error{
     color: red;
 }
+.container-fluid .row .qk-mpr-action{
+    display: grid;
+    width: 104px;
+}
+.btn-action{
+    background-color: #157347
+}

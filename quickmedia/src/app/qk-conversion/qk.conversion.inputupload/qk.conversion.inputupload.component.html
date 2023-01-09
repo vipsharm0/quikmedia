@@ -81,7 +81,9 @@
                     <button type="submit" [disabled]="!client.valid"
                         class="btn btn-primary btn-search btn-sm">Search</button>
                 </div>
-                <div class="d-grid ms-5 col-1">
+                <div class="col-4">
+                </div>
+                <div class="d-grid col-1">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">Send Preview</button>
                 </div>
 
@@ -91,7 +93,7 @@
     </div>
 </p-panel>
 <p-panel header="Upload Input Tvc" [toggleable]="true">
-    <div class="container-fluid">
+    <div class="container-fluid">        
         <div class="container file-container">
             <i class="bi bi-cloud-arrow-up"></i>
             <!-- <div class="upload-text">Upload Gmr File</div> -->
@@ -102,5 +104,9 @@
             <h3>or</h3>
             <label class="align-bottom" for="fileDropRef">Browse for file(s)</label>
         </div>
+            <div class="text-center mt-5">
+                <button type="button"
+                    class="btn btn-primary btn-lg">Send for execution</button>
+            </div>
     </div>
 </p-panel>

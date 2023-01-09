@@ -1,3 +1,43 @@
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Send to Uploader</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p-panel header="Select Uploader" [toggleable]="false">
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+    
+                            <div class="form-floating" id="clientLabel">
+                                <select 
+                                    class="form-select form-select-lg" aria-label=".form-select-lg example"
+                                    name="clientId" required>
+                                    <option>
+                                        -----select-----
+                                    </option>
+    
+                                </select>
+                                <!-- <label for="clientLabel">Select Uploader</label> -->
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>          
+          </p-panel>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>          
+        </div>
+      </div>
+    </div>
+  </div>
 <qk-errors #toastmsg type="toast" text="No Data Found"></qk-errors>
 <p-panel header="Mpr List" [toggleable]="true">
 <div class="mt-2 mb-2 container-fluid">
@@ -20,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <div class="form-group">
                     <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
                     <div class="ms-5 form-floating" id="orderLabel">
@@ -36,16 +76,44 @@
 
                     </div>
                 </div>
-            </div>
-            <div class="d-grid gap-1 col-1">
+            </div>            
+            
+            <div class="d-grid col-1">
                 <button type="submit" [disabled]="!client.valid" class="btn btn-primary btn-search btn-sm">Search</button>
             </div>
-            <div class="d-grid ms-5 col-2" *ngIf="mprs">
-                <button type="button" class="btn btn-success btn-sm">Send to Uploader</button>
+            <div class="col-2" *ngIf="mprs">
             </div>
-            <div class="d-grid ms-5 col-1">
+            <div class="col-3" *ngIf="mprs">
+            </div>
+            <div class="col-1 d-grid " *ngIf="mprs">
+                <div class="btn-group">
+                    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success btn-sm ">Execute</button>
+                    <button type="button" class="btn btn-action btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">View Order</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Hold</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <!-- 
+            <div class="d-grid ms-5 col-1" *ngIf="mprs">
+                <button type="button" class="btn btn-success btn-sm">Submit</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">Approve</button>
+            </div>
+            <div class="d-grid ms-5 col-1" *ngIf="mprs">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">View Order</button>
             </div>
+            <div class="d-grid ms-5 col-1" *ngIf="mprs">
+                <button type="button" class="btn btn-success btn-sm">Delete</button>
+            </div>
+            <div class="d-grid ms-5 col-1" *ngIf="mprs">
+                <button type="button" class="btn btn-success btn-sm">Hold</button>
+            </div> -->
         
     </div>
 </form>

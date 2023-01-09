@@ -2,12 +2,16 @@
     border: 1px solid red;
 } */
 
-.qk-btn-oderlist-search{
+/* .qk-btn-oderlist-search{
     padding: 11px 50px;
-}
+} */
 .qk-orderList-table{
     margin-top: 10px;
 }
 .qk-order-error{
     color: red;
+}
+.qk-btn-oderlist-addchannel{
+    padding-right: 10px;
+font-size: large;
 }

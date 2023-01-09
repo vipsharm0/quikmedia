@@ -66,17 +66,17 @@
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["admin"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Admin
-                            <!-- {{menudata["admin"]}} -->
+                            {{menudata["admin"]}}
                         </a>
-                        <ul class="dropdown-menu" *ngIf='menudata && menudata["admin"] && menudata["adminList"].length > 0'>
+                        <ul class="dropdown-menu" *ngIf='menudata && menudata["conversion"] && menudata["adminList"].length > 0'>
                             <span *ngFor='let item of menudata["adminList"]'>
-                        
+                               
                                 <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                                
+                              
                             </span>
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown" *ngIf='menudata && menudata["invoicing"]'>
@@ -95,19 +95,20 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item dropdown" *ngIf='menudata && menudata["reporting"]'>
+                    <li class="nav-item dropdown" *ngIf='menudata && menudata["conversion"]'>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Reporting
-                            <!-- {{menudata["reporting"]}} -->
+                            {{menudata["reporting"]}}
                         </a>
                         <ul class="dropdown-menu" *ngIf='menudata && menudata["reporting"] && menudata["reportingList"].length > 0'>
                             <span *ngFor='let item of menudata["reportingList"]'>
-                             <li class="pt-2">
+                               
+                                <li class="pt-2">
                                     <a class="dropdown-item" [routerLink]="[item.url]" >{{item.name}}</a>
                                 </li>
-                               
+                              
                             </span>
+
                         </ul>
                     </li>
                     <!-- <li class="nav-item">

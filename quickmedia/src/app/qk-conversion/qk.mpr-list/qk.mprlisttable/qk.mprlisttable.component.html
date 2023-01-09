@@ -1,6 +1,9 @@
 <p-table [scrollable]="true" scrollHeight="400px" [value]="gridValues.data" styleClass="p-datatable-striped" styleClass="p-datatable-sm" >
     <ng-template pTemplate="header">
         <tr>
+            <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
             <th>No.</th>
             <th pSortableColumn="QuikID">Code <p-sortIcon field="QuikID"></p-sortIcon></th>
             <th pSortableColumn="Language">Language <p-sortIcon field="Language"></p-sortIcon></th>
@@ -13,6 +16,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-element let-rowIndex="rowIndex">
         <tr>
+            <td>
+                <p-tableCheckbox></p-tableCheckbox>
+            </td>
             <td>{{rowIndex + 1}}</td>
             <td>{{element.QuikID}}</td>
             <td>{{element.Language}}</td>

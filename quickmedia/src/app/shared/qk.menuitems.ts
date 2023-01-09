@@ -133,7 +133,7 @@ export class menuitems {
         {
             role: this.filters.superAdmin,
             rights: [
-                { menuid: [1,3], data: [1,2,3,4] }
+                { menuid: [2,1,3,4], data: [1,2,3,4,8,10,12] }
             ]
         },
         {
@@ -183,15 +183,16 @@ export class menuitems {
     private menus: menuitem[] = [
         { "id":1, "menuid": userModuleConstants.conversion, "name": "Upload Gmr", "url": "conversion" },
         { "id":2, "menuid": userModuleConstants.invoicing, "name": "View Order", "url": "orders" },
-        { "id":3, "menuid": userModuleConstants.conversion, "name": "Mpr", "url": "conversion/mprlist" },
+        { "id":3, "menuid": userModuleConstants.conversion, "name": "Mpr Approval", "url": "conversion/mprlist" },
         { "id":4, "menuid": userModuleConstants.conversion, "name": "Upload Input Tvc", "url": "conversion/execute" },
         { "id":5, "menuid": userModuleConstants.conversion, "name": "Conversion Status", "url": "vipin3" },
         { "id":6, "menuid": userModuleConstants.invoicing, "name": "invoicing1", "url": "invoicingurl1" },
         { "id":7, "menuid": userModuleConstants.invoicing, "name": "invoicing2", "url": "invoicingurl2" },
-        { "id":8, "menuid": userModuleConstants.administrator, "name": "administrator1", "url": "administratorurl1" },
+        { "id":8, "menuid": userModuleConstants.administrator, "name": "Manage Campaigns", "url": "administratorurl1" },
         { "id":9, "menuid": userModuleConstants.administrator, "name": "administrator2", "url": "administratorurl2" },
-        { "id":10, "menuid": userModuleConstants.reporting, "name": "reporting1", "url": "reportingurl1" },
-        { "id":11, "menuid": userModuleConstants.reporting, "name": "reporting2", "url": "reportingurl2" }
+        { "id":10, "menuid": userModuleConstants.reporting, "name": "Delievery", "url": "reportingurl1" },
+        { "id":11, "menuid": userModuleConstants.reporting, "name": "reporting2", "url": "reportingurl2" },
+        { "id":12, "menuid": userModuleConstants.conversion, "name": "Mpr execute", "url": "conversion/mprlist" },
     ];
     getMenus() {
         return this.menus;
