@@ -1,0 +1,44 @@
+<p-panel header="Local Conversion" [toggleable]="true">
+    <div class="container-fluid">   
+        <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
+            <div class="row mb-5">
+                <div class="col-3">
+                    <div class="form-group">
+
+                        <div class="ms-5 form-floating" id="clientLabel">
+                            <select  (change)="changeclient()" style="width:auto;"
+                                class="form-select form-select-lg w-75" aria-label=".form-select-lg example"
+                                name="clientId"  required>
+                                <!-- <option *ngFor='let item of clients' [ngValue]="item"> -->
+                                <option>
+                                    <!-- {{item.Name}} -->
+                                </option>
+
+                            </select>
+                            <label for="clientLabel">Select File format</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="container file-container">
+           
+
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        <input (change)="fileBrowseHandler($event)" type="file" #fileDropRef appDnd id="fileDropRef"
+                            class="uploader" (fileDropped)="onFileDropped($event)" [isdropable]="true" webkitdirectory multiple />
+            
+                        <h4>Upload / Drag file to convert</h4>
+                        <h3>or</h3>
+                        <label class="align-bottom" for="fileDropRef">Browse for file(s)</label>
+                    </div>
+                </div>
+                <!-- <div class="d-grid col-1">
+                    <button type="submit"  class="btn btn-primary btn-search btn-sm">Search</button>
+                </div> -->
+            </div>
+        </form>     
+        
+      
+    </div>
+</p-panel>

@@ -1,0 +1,82 @@
+<p-panel header="Conversion Logs" [toggleable]="true">
+    <div class="mt-2 mb-2 container-fluid">
+        <form>
+            <!-- <div><div class="qk-mprlist-error ms-5 help-block with-errors">Please select client</div></div> -->
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+
+                        <div class="ms-5 form-floating" id="clientLabel">
+                            <select style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="clientId" required>
+                                <option>
+                                    <!-- {{item.Name}} -->
+                                </option>
+                            </select>
+                            <label for="clientLabel">Select Client</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
+                        <div class="ms-5 form-floating" id="orderLabel">
+                            <select style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="orderid" required>
+                                <option value=""></option>
+                                <option>
+                                    <!-- {{item.Name}} -->
+                                </option>
+
+                            </select>
+                            <label for="orderLabel">Select Campaign</label>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid col-1">
+                    <button type="submit" class="btn btn-primary btn-search btn-sm">Search</button>
+                </div>
+                <div class="col-3">
+                </div>
+
+                
+            </div>
+            <!-- <div class="mt-4 row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="ms-5 form-floating" id="clientLabel">
+                            <select style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="clientId" required>
+                                <option></option>
+                                <option>Order No.</option>
+                                <option>Assigned to</option>
+                                <option>Quik Id</option>
+                                <option>Channels</option>
+                                <option>Destination</option>
+                                <option>Language</option>
+                                <option>Brand</option>
+                                <option>Duration</option>
+                            </select>
+                            <label for="clientLabel">Filter</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-5 col-2">
+                    <div class="form-group">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText class="p-inputtext-sm text-height">
+                            <label for="float-input">Filter Value</label>
+                        </span>
+                    </div>
+                </div>
+            </div> -->
+        </form>
+    </div>
+</p-panel>
+<div class="mt-2 container-fluid">
+    <qk-conversionlogtable></qk-conversionlogtable>
+</div>

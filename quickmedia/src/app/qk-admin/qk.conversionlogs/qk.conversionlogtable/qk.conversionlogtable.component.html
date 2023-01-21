@@ -1,0 +1,24 @@
+<p-table [scrollable]="true" scrollHeight="400px" 
+styleClass="p-datatable-striped" styleClass="p-datatable-sm" 
+[value]="qk">
+
+    <ng-template pTemplate="header">
+        <tr>
+          
+            <th pSortableColumn="Language">Quickid <p-sortIcon field="Language"></p-sortIcon></th>
+            <th pSortableColumn="Caption">S3-Upload status <p-sortIcon field="Caption"></p-sortIcon></th>
+            <th pSortableColumn="Brand">Preview file status <p-sortIcon field="Brand"></p-sortIcon></th>
+            <th pSortableColumn="SDHD">conversion status <p-sortIcon field="SDHD"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-qkobj>
+        <tr>
+          
+            <td>{{qkobj.qkid}}</td>
+            <td><i class="bi bi-x conv-status-x"></i></td>
+            <td><i class="bi bi-x conv-status-x"></i></td>
+            <td><i class="bi bi-check2 conv-status-y"></i></td>
+        </tr>
+      
+    </ng-template>
+</p-table>

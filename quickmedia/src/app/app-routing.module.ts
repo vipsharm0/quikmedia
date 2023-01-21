@@ -29,6 +29,10 @@ const appRoutes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./qk-admin/qk-admin.module').then(x => x.QkAdminModule)
       }
     ]
   }

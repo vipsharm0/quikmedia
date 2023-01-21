@@ -13,6 +13,7 @@ import { QkCommonModule } from './shared/qk-common.module';
 import { MenuComponent } from './components/dashboard/menu/menu.component';
 import { LoaderInterceptor } from './shared/qk.spinner.interceptor';
 import { QkOrdersModule } from './qk-orders/qk-orders.module';
+import { QkAdminModule } from './qk-admin/qk-admin.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { QkOrdersModule } from './qk-orders/qk-orders.module';
     RouterModule,
     QkCommonModule,
     QkOrdersModule,
+    QkAdminModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,19 +1,59 @@
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Uploaders</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p-panel header="Select Uploader" [toggleable]="false">
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+    
+                            <div class="form-floating" id="clientLabel">
+                                <select 
+                                    class="form-select form-select-lg" aria-label=".form-select-lg example"
+                                    name="clientId" required>
+                                    <option>
+                                        -----select-----
+                                    </option>
+    
+                                </select>
+                                <!-- <label for="clientLabel">Uploaders</label> -->
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>          
+          </p-panel>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Re-Assign</button>          
+        </div>
+      </div>
+    </div>
+  </div>
 <p-panel header="Manage Campaigns" [toggleable]="true">
     <div class="mt-2 mb-2 container-fluid">
-        <form #gmrFrm="ngForm" (ngSubmit)="searchMpr()">
-            <div><div class="qk-mprlist-error ms-5 help-block with-errors" *ngIf="!client.valid && client.touched">Please select client</div></div>
+        <form >
+            <!-- <div><div class="qk-mprlist-error ms-5 help-block with-errors">Please select client</div></div> -->
         <div class="row">
                 <div class="col-3">
                     <div class="form-group">
                         
                         <div class="ms-5 form-floating" id="clientLabel">
-                            <select  #client="ngModel" (change)="changeclient(selectedClient)" style="width:auto;" class="form-select form-select-lg w-75"
-                                aria-label=".form-select-lg example" name="clientId" [(ngModel)]="selectedClient" required>
-                                <option *ngFor='let item of clients' [ngValue]="item">
-                                    {{item.Name}}
+                            <select   style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="clientId"  required>
+                                <option >
+                                    <!-- {{item.Name}} -->
                                 </option>    
                             </select>
-                            <label for="clientLabel">Select Campaign</label>
+                            <label for="clientLabel">Select Client</label>
     
                         </div>
                     </div>
@@ -22,11 +62,11 @@
                     <div class="form-group">
                         <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
                         <div class="ms-5 form-floating" id="orderLabel">
-                            <select #order="ngModel" [disabled]="orderDisabled" style="width:auto;" class="form-select form-select-lg w-75"
-                                aria-label=".form-select-lg example" name="orderid" [(ngModel)]="selectedorder" required>
+                            <select  style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="orderid"  required>
                                 <option value=""></option>
-                                <option *ngFor='let item of orders' [ngValue]="item">
-                                    {{item.Name}}
+                                <option >
+                                    <!-- {{item.Name}} -->
                                 </option>
     
                             </select>
@@ -34,27 +74,77 @@
     
                         </div>
                     </div>
-                </div>            
+                </div>     
+                <div class="col-2">
+                    <div class="form-group">
+                        <!-- <div class="ms-5 help-block with-errors" *ngIf="!order.valid && order.touched">Please select order</div> -->
+                        <div class="ms-5 form-floating" id="orderLabel">
+                            <select  style="width:auto;" class="form-select form-select-lg w-75"
+                                aria-label=".form-select-lg example" name="orderid" required>
+                                <option value=""></option>
+                                <option >
+                                    <!-- {{item.Name}} -->
+                                </option>
+    
+                            </select>
+                            <label for="orderLabel">Select Status</label>
+    
+                        </div>
+                    </div>
+                </div>        
                 
                 <div class="d-grid col-1">
-                    <button type="submit" [disabled]="!client.valid" class="btn btn-primary btn-search btn-sm">Search</button>
+                    <button type="submit"  class="btn btn-primary btn-search btn-sm">Search</button>
                 </div>
-                <div class="col-1 d-grid " *ngIf="mprs">
+                <div class="col-3">
+                </div>
+              
+                <div class="col-1 d-grid ">
                     <div class="btn-group">
-                        <button  data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success btn-sm ">Execute</button>
+                        <button type="button" class="btn btn-success btn-sm ">Activate</button>
                         <button type="button" class="btn btn-action btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                          <span class="visually-hidden">Toggle Dropdown</span>
+                          <span class="visually-hidden">Activate</span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">View Order</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Hold</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                          <li><a   data-bs-toggle="modal" data-bs-target="#exampleModal" class="dropdown-item" href="#">Re-assign</a></li>                          
                         </ul>
                       </div>
                 </div>
         </div>
+        <div class="mt-4 row">
+            <div class="col-3">
+                <div class="form-group">                    
+                    <div class="ms-5 form-floating" id="clientLabel">
+                        <select   style="width:auto;" class="form-select form-select-lg w-75"
+                            aria-label=".form-select-lg example" name="clientId"  required>
+                            <option></option> 
+                            <option>Order No.</option>   
+                            <option>Assigned to</option>  
+                            <option>Quik Id</option>   
+                            <option>Channels</option> 
+                            <option>Destination</option> 
+                            <option>Language</option> 
+                            <option>Brand</option> 
+                            <option>Duration</option> 
+                        </select>
+                        <label for="clientLabel">Filter</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="ms-5 col-2">
+                <div class="form-group"> 
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" pInputText 
+                        class="p-inputtext-sm text-height"> 
+                        <label for="float-input">Filter Value</label>
+                    </span>
+                </div>
+            </div>
+        </div>
     </form>
     </div>
-    </p-panel>
+</p-panel>
+    <div class="mt-2 container-fluid">
+        <qk-campaignlisttable></qk-campaignlisttable>
+    </div>

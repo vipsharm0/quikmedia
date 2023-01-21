@@ -11,13 +11,15 @@ import {MessageModule} from 'primeng/message';
 import { menuitems } from './qk.menuitems';
 import { QkSpinnerComponent } from './qk.spinner/qk.spinner.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { DndDirective } from '../directives/dnd.directive';
 
 
 
 @NgModule({
   declarations: [
     QkErrorsComponent,
-    QkSpinnerComponent
+    QkSpinnerComponent,
+    DndDirective
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     MessagesModule,
     ProgressSpinnerModule
   ],
-  exports:[ToastModule, RippleModule, QkErrorsComponent, QkSpinnerComponent],
+  exports:[ToastModule, RippleModule, QkErrorsComponent, QkSpinnerComponent, DndDirective],
   providers:[utils, ErrorNotification,MessageService, menuitems]
 })
 export class QkCommonModule { }

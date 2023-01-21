@@ -24,7 +24,6 @@ import { PanelModule } from 'primeng/panel';
 @NgModule({
   declarations: [
     QkConversionComponent,
-    DndDirective,
     QkMprListComponent,
     QkConversionExecuteComponent,
     QkGmrerrorlistComponent,

@@ -1,0 +1,36 @@
+<p-table [scrollable]="true" scrollHeight="400px" 
+styleClass="p-datatable-striped" styleClass="p-datatable-sm" 
+[value]="qk">
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="QuikID">Order No. <p-sortIcon field="QuikID"></p-sortIcon></th>
+            <th pSortableColumn="QuikID">Assigned to <p-sortIcon field="QuikID"></p-sortIcon></th>
+            <th pSortableColumn="Language">Quickid <p-sortIcon field="Language"></p-sortIcon></th>
+            <th pSortableColumn="Caption">Channels <p-sortIcon field="Caption"></p-sortIcon></th>
+            <th pSortableColumn="Brand">Destination <p-sortIcon field="Brand"></p-sortIcon></th>
+            <th pSortableColumn="SDHD">Language <p-sortIcon field="SDHD"></p-sortIcon></th>
+            <th pSortableColumn="SpecCode">Brand <p-sortIcon field="SpecCode"></p-sortIcon></th>
+            <th pSortableColumn="OutPutURL">Duration <p-sortIcon field="OutPutURL"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-qkobj>
+        <tr>
+            <td>
+                <p-tableCheckbox></p-tableCheckbox>
+            </td>
+            <td>{{qkobj.orderno}}</td>
+            <td>{{qkobj.assigned}}</td>
+            <td>{{qkobj.qkid}}</td>
+            <td>{{qkobj.channels}}</td>
+            <td>{{qkobj.destination}}</td>
+            <td>{{qkobj.lan}}</td>
+            <td>{{qkobj.brand}}</td>
+            <td>{{qkobj.duration}}</td>
+        </tr>
+      
+    </ng-template>
+</p-table>
