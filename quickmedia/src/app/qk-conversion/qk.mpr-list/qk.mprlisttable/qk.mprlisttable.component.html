@@ -1,4 +1,44 @@
 <p-table [scrollable]="true" scrollHeight="400px" [value]="gridValues.data" styleClass="p-datatable-striped" styleClass="p-datatable-sm" >
+    <ng-template pTemplate="caption">
+        <div class="row">
+            <!-- <div class="col-4">
+                <div class="form-floating">
+                <p-multiSelect [options]="orderCols" [(ngModel)]="selectedColumns" optionLabel="header"
+                    selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
+                    placeholder="Choose Columns">
+                </p-multiSelect>
+                </div>
+            </div> -->
+            <div class="col-2">
+                <div class="form-group">                    
+                    <div class="form-floating" id="clientLabel">
+                        <select   style="width:auto;" class="form-select form-select-lg w-75"
+                            aria-label=".form-select-lg example" name="clientId"  required>
+                            <option></option> 
+                            <option>Order No.</option>   
+                            <option>Assigned to</option>  
+                            <option>Quik Id</option>   
+                            <option>Channels</option> 
+                            <option>Destination</option> 
+                            <option>Language</option> 
+                            <option>Brand</option> 
+                            <option>Duration</option> 
+                        </select>
+                        <label for="clientLabel">Filter</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group"> 
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" pInputText 
+                        class="p-inputtext-sm text-height"> 
+                        <label for="float-input">Filter Value</label>
+                    </span>
+                </div>
+            </div>
+        </div> </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th style="width: 4rem">

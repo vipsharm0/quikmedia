@@ -133,7 +133,7 @@ export class menuitems {
         {
             role: this.filters.superAdmin,
             rights: [
-                { menuid: [2,1,3,4], data: [1,2,3,4,8,10,12,9,13] }
+                { menuid: [2,1,3,4], data: [1,2,3,4,8,10,12,9,13,11] }
             ]
         },
         {
@@ -190,10 +190,11 @@ export class menuitems {
         { "id":7, "menuid": userModuleConstants.invoicing, "name": "invoicing2", "url": "invoicingurl2" },
         { "id":8, "menuid": userModuleConstants.administrator, "name": "Manage Campaigns", "url": "admin/managecampaigns" },
         { "id":9, "menuid": userModuleConstants.administrator, "name": "Conversion Log", "url": "admin/conversion-log" },
-        { "id":10, "menuid": userModuleConstants.reporting, "name": "Delievery", "url": "reportingurl1" },
-        { "id":11, "menuid": userModuleConstants.reporting, "name": "reporting2", "url": "reportingurl2" },
+        { "id":10, "menuid": userModuleConstants.reporting, "name": "Delievery", "url": "reports/delievery" },
+        { "id":11, "menuid": userModuleConstants.reporting, "name": "Delievery Tracker", "url": "reports/track-delievery" },
         { "id":12, "menuid": userModuleConstants.conversion, "name": "Mpr execute", "url": "conversion/mprlist" },
-        { "id":13, "menuid": userModuleConstants.administrator, "name": "Conversion", "url": "admin/localconversion" }
+        { "id":13, "menuid": userModuleConstants.administrator, "name": "Conversion", "url": "admin/localconversion" },
+        { "id":13, "menuid": userModuleConstants.administrator, "name": "Manage Emails", "url": "admin/manage-emails" }
     ];
     getMenus() {
         return this.menus;

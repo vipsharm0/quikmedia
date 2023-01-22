@@ -10,7 +10,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
-
+import { InputTextModule } from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { PanelModule } from 'primeng/panel';
     TableModule,
     MultiSelectModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    InputTextModule
   ]
 })
 export class QkOrdersModule { }

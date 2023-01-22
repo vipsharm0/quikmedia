@@ -20,6 +20,7 @@ import { QkGmrerrorlistComponent } from './qk.gmrerrorlist/qk.gmrerrorlist.compo
 import { QkMprlisttableComponent } from './qk.mpr-list/qk.mprlisttable/qk.mprlisttable.component';
 import { QkInputuploadtableComponent } from './qk.conversion.inputupload/qk.inputuploadtable/qk.inputuploadtable.component';
 import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PanelModule } from 'primeng/panel';
     MessagesModule,
     MessageModule,
     QkCommonModule,
-    PanelModule
+    PanelModule,
+    InputTextModule
   ]
 })
 export class QkConversionModule { }

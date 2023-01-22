@@ -34,6 +34,11 @@ const appRoutes: Routes = [
         path: 'admin',
         loadChildren: () => import('./qk-admin/qk-admin.module').then(x => x.QkAdminModule)
       }
+      ,
+      {
+        path: 'reports',
+        loadChildren: () => import('./qk-reports/qk-reports.module').then(x => x.QkReportsModule)
+      }
     ]
   }
 

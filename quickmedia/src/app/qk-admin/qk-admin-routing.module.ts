@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { QkClientcampaignsComponent } from './qk.clientcampaigns/qk.clientcampaigns.component';
 import { QkConversionlogsComponent } from './qk.conversionlogs/qk.conversionlogs.component';
 import { QkLocalconversionComponent } from './qk.localconversion/qk.localconversion.component';
+import { QkManageemailsComponent } from './qk.manageemails/qk.manageemails.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,12 @@ const routes: Routes = [
     {
         path: 'localconversion',
         component: QkLocalconversionComponent
+    },
+    {
+        path: 'manage-emails',
+        component: QkManageemailsComponent
     }
+    
   ];
   
   @NgModule({

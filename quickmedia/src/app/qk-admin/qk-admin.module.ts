@@ -13,6 +13,7 @@ import { QkLocalconversionComponent } from './qk.localconversion/qk.localconvers
 import { DndDirective } from '../directives/dnd.directive';
 import { QkCommonModule } from '../shared/qk-common.module';
 import { FormsModule } from '@angular/forms';
+import { QkManageemailsComponent } from './qk.manageemails/qk.manageemails.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     QkCampaignlisttableComponent,
     QkConversionlogsComponent,
     QkConversionlogtableComponent,
-    QkLocalconversionComponent
+    QkLocalconversionComponent,
+    QkManageemailsComponent
   ],
   imports: [
     CommonModule,

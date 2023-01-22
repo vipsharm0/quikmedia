@@ -1,0 +1,6 @@
+.text-height{
+    height: 47.5px;
+}
+:host ::ng-deep .p-datatable p-multiselect .p-multiselect{
+    height: 47.5px;
+   }
